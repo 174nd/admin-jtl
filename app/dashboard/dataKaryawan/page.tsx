@@ -84,7 +84,7 @@ export default function DataKaryawan() {
                       divisi: "Teknik dan Perencanaan (Pusat)",
                     }
                   ].map((value, index) => (
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
+                    <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">

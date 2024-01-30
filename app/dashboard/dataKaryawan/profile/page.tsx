@@ -110,13 +110,13 @@ export default function Profile() {
             </div>
           </div>
           <div className="w-full h-[150px]">
-            <Image alt=""
+            <Image alt="" width={300} height={300}
               src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg"
               className="w-full h-full rounded-tl-lg rounded-tr-lg"
             />
           </div>
           <div className="flex flex-col items-center -mt-20">
-            <Image alt=""
+            <Image alt="" width={300} height={300}
               src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg"
               className="w-40 border-4 border-white rounded-full"
             />
@@ -328,7 +328,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <Image alt=""
+                            <Image alt="" width={6} height={6}
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/1.jpg"
                             />
@@ -394,7 +394,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <Image alt=""
+                            <Image alt="" width={6} height={6}
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/women/2.jpg"
                             />
@@ -460,7 +460,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <Image alt=""
+                            <Image alt="" width={6} height={6}
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/3.jpg"
                             />
@@ -526,7 +526,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <Image alt=""
+                            <Image alt="" width={6} height={6}
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/4.jpg"
                             />
@@ -592,7 +592,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <Image alt=""
+                            <Image alt="" width={6} height={6}
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/5.jpg"
                             />

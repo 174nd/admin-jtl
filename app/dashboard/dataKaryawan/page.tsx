@@ -15,7 +15,7 @@ export default function DataKaryawan() {
   useEffect(() => {
     setHeaderBar({pageName: "Data Karyawan", breadCrumb: ["Dashboard", "Data Karyawan"]});
     setSidebarActiveKey("Data Karyawan");
-  }, [])
+  }, [setHeaderBar, setSidebarActiveKey])
 
   return (
     <div className="my-4 flex flex-row space-y-0 space-x-4">

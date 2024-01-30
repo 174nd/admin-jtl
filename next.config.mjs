@@ -11,6 +11,9 @@ const nextConfig = {
       }, {
         protocol: 'https',
         hostname: 'randomuser.me',
+      }, {
+        protocol: 'https',
+        hostname: 'vojislavd.com',
       },
     ],
   },

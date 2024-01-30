@@ -1,6 +1,7 @@
 "use client";
 
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
+import Image from "next/image";
 import { useEffect } from "react";
 import {
   MdDateRange,
@@ -18,7 +19,7 @@ export default function Profile() {
       breadCrumb: ["Dashboard", "Data Karyawan", "Profile"],
     });
     setSidebarActiveKey("Data Karyawan");
-  }, []);
+  }, [setHeaderBar, setSidebarActiveKey])
   return (
     <div className="my-4 flex flex-row space-y-0 space-x-4">
       <div className="flex flex-col w-1/3">
@@ -109,13 +110,13 @@ export default function Profile() {
             </div>
           </div>
           <div className="w-full h-[150px]">
-            <img
+            <Image alt=""
               src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg"
               className="w-full h-full rounded-tl-lg rounded-tr-lg"
             />
           </div>
           <div className="flex flex-col items-center -mt-20">
-            <img
+            <Image alt=""
               src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg"
               className="w-40 border-4 border-white rounded-full"
             />
@@ -327,7 +328,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <img
+                            <Image alt=""
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/1.jpg"
                             />
@@ -393,7 +394,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <img
+                            <Image alt=""
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/women/2.jpg"
                             />
@@ -459,7 +460,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <img
+                            <Image alt=""
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/3.jpg"
                             />
@@ -525,7 +526,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <img
+                            <Image alt=""
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/4.jpg"
                             />
@@ -591,7 +592,7 @@ export default function Profile() {
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
                           <div className="mr-2">
-                            <img
+                            <Image alt=""
                               className="w-6 h-6 rounded-full"
                               src="https://randomuser.me/api/portraits/men/5.jpg"
                             />

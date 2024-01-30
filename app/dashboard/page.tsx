@@ -9,7 +9,7 @@ export default function Dash() {
   useEffect(() => {
     setHeaderBar({pageName: "Dashboard", breadCrumb: ["Dashboard"]});
     setSidebarActiveKey("dashboard");
-  }, [])
+  }, [setHeaderBar, setSidebarActiveKey])
   return (
     <>
     </>

@@ -16,18 +16,32 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.sidebar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #999999 transparent;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* For Google Chrome and others */
+.sidebar::-webkit-scrollbar {
+  background: transparent;
+  width: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 10px;
+}
+
+/* Custom style */
+.header-right {
+  width: calc(100% - 3.5rem);
+}
+.sidebar:hover {
+  width: 16rem;
+}
+@media only screen and (min-width: 768px) {
+  .header-right {
+      width: calc(100% - 16rem);
+  }        
 }

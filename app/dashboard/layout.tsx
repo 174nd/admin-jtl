@@ -28,17 +28,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <Sidebar/>
           <div className="p-4 xl:ml-72 relative">
             <Header/>
-            <div className="mt-9 container">
+            <div className="mt-9">
               {children}
             </div>
             <Footer/>
 
 
-            {/* <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm overflow-y-scroll">
-              <div className="w-full max-w-md overflow-hidden bg-white mx-auto my-6">
-
-              </div>
-            </div> */}
+            {/* */}
 
 
 

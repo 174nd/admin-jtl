@@ -36,14 +36,14 @@ export default function HeaderProfile() {
               Teknik dan Perencanaan (Pusat)
             </p>
 
-            <Link href="/dashboard/profile">
+            <Link href="/dashboard/profile" onClick={() => setDropdown(!dropdown)}>
               <div className="border rounded-full mt-5 py-2 px-4 text-sm font-semibold text-gray-100 hover:bg-white hover:text-sky-400">
                 Profile
               </div>
             </Link>
           </div>
 
-          <Link href="/" className="w-full px-4 py-4 hover:bg-gray-100 flex justify-center">
+          <Link href="/" className="w-full px-4 py-4 hover:bg-gray-100 flex justify-center" onClick={() => setDropdown(!dropdown)}>
             <span className="text-sm font-medium text-gray-800 leading-none">
               Logout
             </span>

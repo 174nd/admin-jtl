@@ -25,6 +25,11 @@ type HeaderSidebarContextType = {
 
   stickyHeader: boolean,
   setStickyHeader: React.Dispatch<React.SetStateAction<boolean>>,
+
+
+  
+  addModal: () => void,
+  removeModal: () => void,
 }
 
 const HeaderSidebarContext = createContext<HeaderSidebarContextType | null>(null);
@@ -32,6 +37,7 @@ const HeaderSidebarContext = createContext<HeaderSidebarContextType | null>(null
 export default function HeaderSidebarContextProvider({children}: HeaderSidebarContextProviderProps) {
   const [sidebarStatus, setHeaderSidebar] = useState<boolean>(false);
   const [stickyHeader, setStickyHeader] = useState<boolean>(false);
+  const [modal, setModal] = useState<number>(0);
   const [sidebarActiveKey, setSidebarActiveKey] = useState<string>("");
   const [headerBar, setHeaderBar] = useState<HeaderBar>({pageName: "-", breadCrumb: ["-"]});
 
@@ -39,6 +45,19 @@ export default function HeaderSidebarContextProvider({children}: HeaderSidebarCo
     window.localStorage.setItem("toggleSidebar", !sidebarStatus ? "true" : "false");
     setHeaderSidebar(!sidebarStatus);
   }
+
+  const addModal = () => {
+    console.log('addModal', modal);
+    if(modal == 0) document.body.classList.add('overflow-hidden');
+    setModal(modal + 1);
+  }
+
+  const removeModal = () => {
+    console.log('removeModal', modal);
+    if(modal == 0) document.body.classList.remove('overflow-hidden');
+    setModal(modal == 0 ? modal : modal - 1 );
+  }
+
 
   useEffect(() => {
     const localSidebar = window.localStorage.getItem("sidebarStatus") as "true" | "false" | null;
@@ -60,6 +79,8 @@ export default function HeaderSidebarContextProvider({children}: HeaderSidebarCo
     setSidebarActiveKey,
     stickyHeader,
     setStickyHeader,
+    addModal,
+    removeModal,
   }}>{children}</HeaderSidebarContext.Provider>
 }
 

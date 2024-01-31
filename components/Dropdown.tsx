@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
-export default function Dropdown({data}: {data: {value: string, label?: string}[]}) {
+export default function Dropdown({className, placeholder, data}: {className?: string | undefined, placeholder?: string; data: {value: string, label?: string}[]}) {
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [selectId, setSelectId] = useState<number | null>(null);
-  const [dropdownValue, setDropdownValue] = useState<string>("Select");
+  const [dropdownValue, setDropdownValue] = useState<string>(placeholder ?? "Select");
   
   const wrapperRef = useRef<any>(null);
   useEffect(() => {
@@ -18,7 +18,6 @@ export default function Dropdown({data}: {data: {value: string, label?: string}[
 
 
   const onSelected = (id: number, val: string) => {
-    console.log(id, val)
     setDropdown(!dropdown);
     setDropdownValue(val);
     setSelectId(id);
@@ -30,9 +29,8 @@ export default function Dropdown({data}: {data: {value: string, label?: string}[
         // onFocus={() => setDropdown(true)}
         // onBlur={() => dropdown && setDropdown(false)}
         onClick={() => setDropdown(!dropdown)}
-        className="inline-flex justify-between w-32 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded shadow-sm  focus:outline-none focus:border-blue-500"
-      >
-        <span className="mr-2">{dropdownValue}</span>
+        className={(className && className + ' ') + `inline-flex items-center justify-between px-4 py-2 w-52 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded shadow-sm  focus:outline-none focus:border-blue-500`}>
+        <span className={`mr-2 w-full text-left`}>{dropdownValue}</span>
         <FaChevronDown className={classNames("w-3 h-3 mt-1 ml-2 -mr-1 duration-300", dropdown && "rotate-180")} />
       </button>
       <div

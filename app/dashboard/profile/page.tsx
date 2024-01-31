@@ -1,9 +1,10 @@
 "use client";
 
+import Modal from "@/components/Modal";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
-import { useEffect } from "react";
-import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaRegEye } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaRegEye, FaUserPlus } from "react-icons/fa";
 import {
   MdDateRange,
   MdOutlineSentimentVerySatisfied,
@@ -13,18 +14,19 @@ import {
 
 
 export default function Profile() {
-  const { setHeaderBar } = useHeaderSidebarContext();
+  const { setHeaderBar, setSidebarActiveKey } = useHeaderSidebarContext();
   useEffect(() => {
     setHeaderBar({
       pageName: "Profile",
       breadCrumb: ["Dashboard", "Profile"],
     });
-  }, [setHeaderBar])
+    setSidebarActiveKey("");
+  }, [setHeaderBar, setSidebarActiveKey])
   return (
     <div className="my-4 flex flex-col md:flex-row space-y-0 space-x-0 md:space-x-4">
       
-      <div className="flex flex-col w-full md:w-1/3">
-        <div className="bg-white rounded-lg shadow-xl pb-8 order-1">
+      <div className="flex flex-col w-full md:w-1/3 gap-4">
+        <div className="bg-white rounded-lg shadow-xl pb-8">
           <div className="w-full h-[150px]">
             <Image alt="" width={300} height={300}
               src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg"
@@ -46,7 +48,9 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-3">
+        
+
+        <div className="bg-white rounded-lg shadow-xl p-8">
           <h4 className="text-xl text-gray-900 font-bold">
             Statistik Kinerja Terakhir
           </h4>
@@ -105,7 +109,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-4">
+        <div className="bg-white rounded-lg shadow-xl p-8">
           <h4 className="text-xl text-gray-900 font-bold">Mutasi Jabatan</h4>
           <div className="relative px-4">
             <div className="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
@@ -164,8 +168,8 @@ export default function Profile() {
       {
         //TODO: Tidak Responsive 
       }
-      <div className="flex flex-col w-full md:w-2/3 ml-0">
-        <div className="bg-white rounded-lg shadow-xl block overflow-x-auto mt-4 md:mt-0 p-8 order-2">
+      <div className="flex flex-col w-full md:w-2/3 gap-4">
+        <div className="bg-white rounded-lg shadow-xl block overflow-x-auto md:mt-0 p-8 order-2">
           <h4 className="text-xl text-gray-900 font-bold">Personal Info</h4>
           <ul className="mt-2 text-gray-700">
             <li className="flex flex-col md:flex-row border-y py-2">
@@ -210,7 +214,7 @@ export default function Profile() {
             </li>
           </ul>
         </div>
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-5">
+        <div className="bg-white rounded-lg shadow-xl p-8 order-5">
           <h4 className="text-xl text-gray-900 font-bold">Statistics</h4>
           <div className="mt-4">
             <div className="bg-white">

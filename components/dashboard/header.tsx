@@ -6,18 +6,10 @@ import { IoMdHome } from "react-icons/io";
 import HeaderProfile from "./HeaderProfile";
 
 export default function Header() {
-  const [isSticky, setIsSticky] = useState(false);
-  const { toggleSidebar, headerBar } = useHeaderSidebarContext();
-
-  useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 0);
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { toggleSidebar, headerBar, stickyHeader } = useHeaderSidebarContext();
 
   return (
-    <header className={`sticky top-3 z-10 px-4 py-2 ${isSticky && `backdrop-blur-md shadow-md rounded-xl bg-white bg-opacity-50`}`}>
+    <header className={`sticky top-3 z-20 px-4 py-2 ${stickyHeader && `backdrop-blur-md shadow-md rounded-xl bg-white bg-opacity-50`}`}>
       <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
         <div className="flex flex-col-reverse justify-between gap-4 md:flex-row md:items-center">
           <div className="capitalize">
@@ -55,7 +47,7 @@ export default function Header() {
             </h6>
           </div>
 
-          <hr className={`border-blue-400 border-y-2 transition-colors ease-in-out ${isSticky ? `border-opacity-50` : `border-opacity-0` }`}/>
+          <hr className={`border-blue-400 border-y-2 transition-colors ease-in-out ${stickyHeader ? `border-opacity-50` : `border-opacity-0` }`}/>
 
           <div className="flex items-center">
             <button

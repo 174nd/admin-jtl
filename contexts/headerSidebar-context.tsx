@@ -22,12 +22,16 @@ type HeaderSidebarContextType = {
 
   sidebarActiveKey: string,
   setSidebarActiveKey: React.Dispatch<React.SetStateAction<string>>,
+
+  stickyHeader: boolean,
+  setStickyHeader: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const HeaderSidebarContext = createContext<HeaderSidebarContextType | null>(null);
 
 export default function HeaderSidebarContextProvider({children}: HeaderSidebarContextProviderProps) {
   const [sidebarStatus, setHeaderSidebar] = useState<boolean>(false);
+  const [stickyHeader, setStickyHeader] = useState<boolean>(false);
   const [sidebarActiveKey, setSidebarActiveKey] = useState<string>("");
   const [headerBar, setHeaderBar] = useState<HeaderBar>({pageName: "-", breadCrumb: ["-"]});
 
@@ -39,6 +43,12 @@ export default function HeaderSidebarContextProvider({children}: HeaderSidebarCo
   useEffect(() => {
     const localSidebar = window.localStorage.getItem("sidebarStatus") as "true" | "false" | null;
     setHeaderSidebar(localSidebar == "true");
+    setStickyHeader(window.scrollY > 0);
+    
+    const handleScroll = () => setStickyHeader(window.scrollY > 0);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return <HeaderSidebarContext.Provider value={{ 
@@ -48,6 +58,8 @@ export default function HeaderSidebarContextProvider({children}: HeaderSidebarCo
     setHeaderBar,
     sidebarActiveKey,
     setSidebarActiveKey,
+    stickyHeader,
+    setStickyHeader,
   }}>{children}</HeaderSidebarContext.Provider>
 }
 

@@ -22,7 +22,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={karla.className}>
-      <div className="min-h-screen bg-gray-50/50 relative">
+      {/* <body className={karla.className + " overflow-hidden"}> */}
+      <div className="bg-gray-50/50">
         <HeaderSidebarContextProvider>
           <Sidebar/>
           <div className="p-4 xl:ml-72 relative">
@@ -31,6 +32,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               {children}
             </div>
             <Footer/>
+
+
+            {/* <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm overflow-y-scroll">
+              <div className="w-full max-w-md overflow-hidden bg-white mx-auto my-6">
+
+              </div>
+            </div> */}
+
+
+
+
+
+
           </div>
         </HeaderSidebarContextProvider>
       
@@ -40,15 +54,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       </div>
 
 
-
-
-      {/* <div className="fixed inset-0 z-50 w-full h-screen overflow-hidden bg-black/30 flex items-center justify-center">
-          <div className="w-full max-w-md px-4 pt-10 pb-4 rounded-md shadow-lg overflow-auto bg-white my-10">
-            <div className="flex flex-col justify-center">
-              <h2 className="text-xl font-semibold mb-4">Modal Title</h2>
-            </div>
-          </div>
-        </div> */}
 
 
       </body>

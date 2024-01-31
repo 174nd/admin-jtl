@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside ref={wrapperRef} className={`bg-gradient-to-br from-sky-300 via-sky-400 to-blue-500 fixed inset-0 z-20 my-4 ml-4 h-[calc(100vh-32px)] w-64 rounded-xl transition-transform duration-300 xl:translate-x-0  ${!sidebarStatus && `-translate-x-80`}`}>
+      <aside ref={wrapperRef} className={`bg-gradient-to-br from-sky-300 via-sky-400 to-blue-500 fixed inset-0 z-30 my-4 ml-4 h-[calc(100vh-32px)] w-64 rounded-xl transition-transform duration-300 xl:translate-x-0 ${!sidebarStatus && `-translate-x-80`} bg-black/50`}>
       <div className="relative border-b border-white/20">
         <a className="flex items-center gap-3 py-6 px-5" href="#/">
             <Image alt="icon" width={10} height={10} className="w-6 h-6 md:w-10 md:h-10"

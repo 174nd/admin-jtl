@@ -23,7 +23,7 @@ export default function Header() {
           <div className="capitalize">
             <nav aria-label="breadcrumb" className="w-max">
               <ol className="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
-                <li key={Math.random()} className="flex items-center antialiased font-sans text-sm font-normal leading-normal cursor-pointer">
+                <li className="flex items-center antialiased font-sans text-sm font-normal leading-normal cursor-pointer">
                   <a href="#">
                     <IoMdHome className="duration-300 opacity-50 transition-all text-blue-900 hover:text-blue-900 hover:opacity-100"/>
                   </a>

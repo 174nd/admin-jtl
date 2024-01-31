@@ -38,7 +38,8 @@ export default function Sidebar() {
       </div>
       <div className="m-4 flex flex-col justify-between flex-grow">
         <ul className="mb-4 flex flex-col gap-1">
-          {sidebarContent.map((v,i) => (SidebarItem(v, i)))}
+          {sidebarContent.map((value, index) => <SidebarItem item={value} key={index}/>)}
+          {/* {sidebarContent.map((v,i) => (SidebarItem({item: v, key: i})))} */}
         </ul>
       </div>
     </aside>

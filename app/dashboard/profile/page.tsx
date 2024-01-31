@@ -3,6 +3,7 @@
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import { useEffect } from "react";
+import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaRegEye } from "react-icons/fa";
 import {
   MdDateRange,
   MdOutlineSentimentVerySatisfied,
@@ -12,103 +13,18 @@ import {
 
 
 export default function Profile() {
-  const { setHeaderBar, setSidebarActiveKey } = useHeaderSidebarContext();
+  const { setHeaderBar } = useHeaderSidebarContext();
   useEffect(() => {
     setHeaderBar({
       pageName: "Profile",
-      breadCrumb: ["Dashboard", "Data Karyawan", "Profile"],
+      breadCrumb: ["Dashboard", "Profile"],
     });
-    setSidebarActiveKey("Data Karyawan");
-  }, [setHeaderBar, setSidebarActiveKey])
+  }, [setHeaderBar])
   return (
-    <div className="my-4 flex flex-row space-y-0 space-x-4">
-      <div className="flex flex-col w-1/3">
-        <div className="bg-white rounded-lg shadow-xl pb-8">
-          <div className="absolute right-12 mt-4 rounded">
-            <div
-              className="bg-white absolute right-0 w-40 py-2 mt-1 border border-gray-200 shadow-2xl"
-              style={{ display: "none" }}
-            >
-              <div className="py-2 border-b">
-                <p className="text-gray-400 text-xs px-6 uppercase mb-1">
-                  Settings
-                </p>
-                <button className="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                    ></path>
-                  </svg>
-                  <span className="text-sm text-gray-700">Share Profile</span>
-                </button>
-                <button className="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-                    ></path>
-                  </svg>
-                  <span className="text-sm text-gray-700">Block User</span>
-                </button>
-                <button className="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                  <span className="text-sm text-gray-700">More Info</span>
-                </button>
-              </div>
-              <div className="py-2">
-                <p className="text-gray-400 text-xs px-6 uppercase mb-1">
-                  Feedback
-                </p>
-                <button className="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                    ></path>
-                  </svg>
-                  <span className="text-sm text-gray-700">Report</span>
-                </button>
-              </div>
-            </div>
-          </div>
+    <div className="my-4 flex flex-col md:flex-row space-y-0 space-x-0 md:space-x-4">
+      
+      <div className="flex flex-col w-full md:w-1/3">
+        <div className="bg-white rounded-lg shadow-xl pb-8 order-1">
           <div className="w-full h-[150px]">
             <Image alt="" width={300} height={300}
               src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg"
@@ -121,16 +37,16 @@ export default function Profile() {
               className="w-40 border-4 border-white rounded-full"
             />
             <div className="flex items-center space-x-2 mt-2">
-              <p className="text-2xl">Shinta Amelia Rahmah</p>
+              <p className="text-center text-2xl">Shinta Amelia Rahmah</p>
             </div>
-            <p className="text-gray-700">
+            <p className="text-center text-gray-700">
               Keuangan, Akuntansi dan Manrisk (Pusat)
             </p>
             <p className="text-sm text-gray-500">Fungsional</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8">
+        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-3">
           <h4 className="text-xl text-gray-900 font-bold">
             Statistik Kinerja Terakhir
           </h4>
@@ -189,7 +105,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8">
+        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-4">
           <h4 className="text-xl text-gray-900 font-bold">Mutasi Jabatan</h4>
           <div className="relative px-4">
             <div className="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
@@ -245,53 +161,56 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex flex-col w-2/3">
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8">
+      {
+        //TODO: Tidak Responsive 
+      }
+      <div className="flex flex-col w-full md:w-2/3 ml-0">
+        <div className="bg-white rounded-lg shadow-xl block overflow-x-auto mt-4 md:mt-0 p-8 order-2">
           <h4 className="text-xl text-gray-900 font-bold">Personal Info</h4>
           <ul className="mt-2 text-gray-700">
-            <li key={Math.random()} className="flex border-y py-2">
+            <li className="flex flex-col md:flex-row border-y py-2">
               <span className="font-bold w-32">Nama Lengkap:</span>
               <span className="text-gray-700">Shinta Amelia Rahmah</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Tanggal Lahir:</span>
               <span className="text-gray-700">24 Jul, 1991</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Jabatan:</span>
               <span className="text-gray-700">Fungsional</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Departemen:</span>
               <span className="text-gray-700">
                 Keuangan, Akuntansi dan Manrisk (Pusat)
               </span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Mulai Kerja:</span>
               <span className="text-gray-700">05 June 2019</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">No. Hp:</span>
               <span className="text-gray-700">(123) 123-1234</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Email:</span>
               <span className="text-gray-700">
                 ShintaAmeliaRahmah@example.com
               </span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Alamat:</span>
               <span className="text-gray-700">Jakarta, Indonesia</span>
             </li>
-            <li key={Math.random()} className="flex border-b py-2">
+            <li className="flex flex-col md:flex-row border-b py-2">
               <span className="font-bold w-32">Status:</span>
               <span className="text-gray-700">PKWTT</span>
             </li>
           </ul>
         </div>
-        <div className="bg-white rounded-lg shadow-xl mt-4 p-8">
+        <div className="bg-white rounded-lg shadow-xl mt-4 p-8 order-5">
           <h4 className="text-xl text-gray-900 font-bold">Statistics</h4>
           <div className="mt-4">
             <div className="bg-white">
@@ -316,336 +235,77 @@ export default function Profile() {
                     </tr>
                   </thead>
                   <tbody className="text-gray-600 text-sm font-light">
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <MdDateRange />
+                    {[
+                      {
+                        date: "20 April 2023",
+                        image: "https://randomuser.me/api/portraits/men/1.jpg",
+                        name: "Eshal Rosas",
+                        skor: 20,
+                        maxSkor: 100,
+                      }, {
+                        date: "20 April 2023",
+                        image: "https://randomuser.me/api/portraits/women/2.jpg",
+                        name: "Anita Rodriquez",
+                        skor: 20,
+                        maxSkor: 100,
+                      }, {
+                        date: "20 April 2023",
+                        image: "https://randomuser.me/api/portraits/men/3.jpg",
+                        name: "Taylan Bush",
+                        skor: 20,
+                        maxSkor: 100,
+                      }, {
+                        date: "20 April 2023",
+                        image: "https://randomuser.me/api/portraits/men/4.jpg",
+                        name: "Tarik Novak",
+                        skor: 20,
+                        maxSkor: 100,
+                      }, {
+                        date: "20 April 2023",
+                        image: "https://randomuser.me/api/portraits/men/5.jpg",
+                        name: "Oscar Howard",
+                        skor: 20,
+                        maxSkor: 100,
+                      }
+                    ].map((v,i) => (
+                      <tr key={i} className="border-b border-gray-200 hover:bg-gray-100">
+                        <td className="py-3 px-6 text-left whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="mr-2">
+                              <MdDateRange />
+                            </div>
+                            <span className="font-medium">{v.date}</span>
                           </div>
-                          <span className="font-medium">20 April 2023</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-left">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image alt="" width={6} height={6}
-                              className="w-6 h-6 rounded-full"
-                              src="https://randomuser.me/api/portraits/men/1.jpg"
-                            />
-                          </div>
-                          <span>Eshal Rosas</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                          20 / 100
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <div className="flex item-center justify-center">
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        </td>
+                        <td className="py-3 px-6 text-left">
+                          <div className="flex items-center">
+                            <div className="mr-2">
+                              <Image alt="" width={6} height={6}
+                                className="w-6 h-6 rounded-full"
+                                src="https://randomuser.me/api/portraits/men/1.jpg"
                               />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
+                            </div>
+                            <span>{v.name}</span>
                           </div>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
+                        </td>
+                        <td className="py-3 px-6 text-center">
+                          <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
+                            {v.skor} / {v.maxSkor}
+                          </span>
+                        </td>
+                        <td className="py-3 px-6 text-center">
+                          <div className="flex item-center justify-center">
+                            <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                              <FaRegEye/>
+                            </div>
+                            <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                              <FaPencilAlt/>
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <MdDateRange />
-                          </div>
-                          <span className="font-medium">20 April 2023</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-left">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image alt="" width={6} height={6}
-                              className="w-6 h-6 rounded-full"
-                              src="https://randomuser.me/api/portraits/women/2.jpg"
-                            />
-                          </div>
-                          <span>Anita Rodriquez</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                          20 / 100
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <div className="flex item-center justify-center">
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
-                          </div>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <MdDateRange />
-                          </div>
-                          <span className="font-medium">20 April 2023</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-left">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image alt="" width={6} height={6}
-                              className="w-6 h-6 rounded-full"
-                              src="https://randomuser.me/api/portraits/men/3.jpg"
-                            />
-                          </div>
-                          <span>Taylan Bush</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                          20 / 100
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <div className="flex item-center justify-center">
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
-                          </div>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <MdDateRange />
-                          </div>
-                          <span className="font-medium">20 April 2023</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-left">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image alt="" width={6} height={6}
-                              className="w-6 h-6 rounded-full"
-                              src="https://randomuser.me/api/portraits/men/4.jpg"
-                            />
-                          </div>
-                          <span>Tarik Novak</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                          20 / 100
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <div className="flex item-center justify-center">
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
-                          </div>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <MdDateRange />
-                          </div>
-                          <span className="font-medium">20 April 2023</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-left">
-                        <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image alt="" width={6} height={6}
-                              className="w-6 h-6 rounded-full"
-                              src="https://randomuser.me/api/portraits/men/5.jpg"
-                            />
-                          </div>
-                          <span>Oscar Howard</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                          20 / 100
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <div className="flex item-center justify-center">
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
-                          </div>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -653,35 +313,7 @@ export default function Profile() {
               <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
                 <div className="lg:w-3/5 w-full  flex items-center justify-between border-t border-gray-200">
                   <div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-                    <svg
-                      width="14"
-                      height="8"
-                      viewBox="0 0 14 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.1665 4H12.8332"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M1.1665 4L4.49984 7.33333"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M1.1665 4.00002L4.49984 0.666687"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                    <FaArrowLeft width="14" height="8"/>
                     <p className="text-sm ml-3 font-medium leading-none ">
                       Previous
                     </p>
@@ -716,35 +348,7 @@ export default function Profile() {
                     <p className="text-sm font-medium leading-none mr-3">
                       Next
                     </p>
-                    <svg
-                      width="14"
-                      height="8"
-                      viewBox="0 0 14 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.1665 4H12.8332"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.5 7.33333L12.8333 4"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.5 0.666687L12.8333 4.00002"
-                        stroke="currentColor"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                    <FaArrowRight width="14" height="8"/>
                   </div>
                 </div>
               </div>

@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   icons: "/logo.svg"
 };
 
-export default function ProfileKaryawanLayout({children}: {children: React.ReactNode}) {
+export default function ProfileLayout({children}: {children: React.ReactNode}) {
   return children;
 }

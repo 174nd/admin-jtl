@@ -2,10 +2,11 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
-export default function Dropdown({className, placeholder, data}: {className?: string | undefined, placeholder?: string; data: {value: string, label?: string}[]}) {
+export default function Dropdown({className, placeholder, data}: {className?: string | undefined, placeholder?: string; data: {value: string, label?: string, status?: boolean}[]}) {
+  const selectedIndex = data.findIndex(x => x.status), selectedData = selectedIndex != undefined ? data[selectedIndex] : undefined;
   const [dropdown, setDropdown] = useState<boolean>(false);
-  const [selectId, setSelectId] = useState<number | null>(null);
-  const [dropdownValue, setDropdownValue] = useState<string>(placeholder ?? "Select");
+  const [selectId, setSelectId] = useState<number | null>(selectedIndex ?? null);
+  const [dropdownValue, setDropdownValue] = useState<string>(selectedData?.label ?? selectedData?.value ?? "Select");
   
   const wrapperRef = useRef<any>(null);
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function Dropdown({className, placeholder, data}: {className?: st
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [wrapperRef, dropdown]);
+  }, [wrapperRef, dropdown, data, selectId]);
 
 
   const onSelected = (id: number, val: string) => {
@@ -34,7 +35,7 @@ export default function Dropdown({className, placeholder, data}: {className?: st
         <FaChevronDown className={classNames("w-3 h-3 mt-1 ml-2 -mr-1 duration-300", dropdown && "rotate-180")} />
       </button>
       <div
-        className={classNames(dropdown ? "block" : "hidden", "absolute w-full left-0 mt-2 rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1")}
+        className={classNames(dropdown ? "absolute" : "hidden", "absolute w-full left-0 mt-2 z-50 rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1")}
       >
         {data.map((v,i) => (
           <button

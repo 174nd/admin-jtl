@@ -47,14 +47,12 @@ export default function HeaderSidebarContextProvider({children}: HeaderSidebarCo
   }
 
   const addModal = () => {
-    console.log('addModal', modal);
     if(modal == 0) document.body.classList.add('overflow-hidden');
     setModal(modal + 1);
   }
 
   const removeModal = () => {
-    console.log('removeModal', modal);
-    if(modal == 0) document.body.classList.remove('overflow-hidden');
+    if(modal == 1) document.body.classList.remove('overflow-hidden');
     setModal(modal == 0 ? modal : modal - 1 );
   }
 

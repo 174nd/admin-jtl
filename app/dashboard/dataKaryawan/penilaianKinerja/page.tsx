@@ -37,9 +37,9 @@ export default function PenilaianKinerja() {
               <p className="text-center text-2xl">Shinta Amelia Rahmah</p>
             </div>
             <p className="text-center text-gray-700">
-              Keuangan, Akuntansi dan Manrisk (Pusat)
+              Fungsional
             </p>
-            <p className="text-sm text-gray-500">Fungsional</p>
+            <p className="text-sm text-gray-500">Keuangan, Akuntansi dan Manrisk - Pusat</p>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Modal from "@/components/Modal";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import { useEffect, useState } from "react";

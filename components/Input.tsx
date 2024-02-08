@@ -1,7 +1,6 @@
-import classNames from 'classnames';
 import React from 'react';
 
-export default function Input({props}: {props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>}) {
+export default function Input(props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) {
   let className, onProps;
   if(props?.className != undefined){
     const {className: y, ...x} = props;

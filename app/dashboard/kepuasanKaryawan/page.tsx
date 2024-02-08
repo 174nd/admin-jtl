@@ -7,13 +7,14 @@ import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaUserPlus } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
 import { MdFormatListBulletedAdd } from "react-icons/md";
+import { ImCross } from "react-icons/im";
 
 
 export default function DataKaryawan() {
-  const { setHeaderBar, setSidebarActiveKey } = useHeaderSidebarContext();
+  const { setHeaderBar, setSidebarActiveKey, addModal, removeModal } = useHeaderSidebarContext();
   const [openModal, setOpenModal] = useState<boolean>(false);
   useEffect(() => {
     setHeaderBar({pageName: "Kepuasan Karyawan", breadCrumb: ["Dashboard", "Kepuasan Karyawan"]});
@@ -29,45 +30,60 @@ export default function DataKaryawan() {
               <span className="absolute">
                 <FaMagnifyingGlass className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600" />
               </span>
-              <Input props={{type: "text", className: "block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 ", placeholder: "Search"}}/>
+              <Input type="text" className="block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 " placeholder="Search"/>
 
             </div>
 
             <button 
               className="flex justify-center h-3/4 items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-xl w-48 text-white py-2 duration-300"
-              onClick={() => setOpenModal(!openModal)}
+              onClick={() => {
+                setOpenModal(!openModal);
+                addModal();
+              }}
             >
               <MdFormatListBulletedAdd/>
               Buat Form
           </button>
             
-            <Modal title="Form Kepuasan Karyawan" openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
-              <div className="py-5 px-8">
-                <div className="grid grid-cols-1 gap-5 divide-y">
-                  {[
-                    "Nama Form",
-                    "Tanggal Lahir",
-                    "Jabatan",
-                    "Departemen",
-                    "No. Hp",
-                    "Email",
-                    "Alamat",
-                    "Status",
-                  ].map((v,i) => (
-                    <div key={i} className="py-2">
-                      <label htmlFor="name" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                        {v}
-                      </label>
-                      <input id="name" className="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder={v} />
-                    </div>
-                  ))}
+            <Modal openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
+              <div className="w-full max-w-2xl bg-white shadow-md rounded-lg border">
+                <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
+                  <h2 className="text-xl font-semibold text-gray-600">Form Kepuasan Karyawan</h2>
+                  <button role="button" onClick={() => {
+                    setOpenModal(!openModal);
+                    removeModal();
+                  }} className="cursor-pointertext-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"> 
+                    <ImCross width={20} height={20} />
+                  </button>
                 </div>
-                
-              </div>
 
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"> Simpan </button>
-                <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancel </button>
+                <div className="py-5 px-8">
+                  <div className="grid grid-cols-1 gap-5 divide-y">
+                    {[
+                      "Nama Form",
+                      "Tanggal Lahir",
+                      "Jabatan",
+                      "Departemen",
+                      "No. Hp",
+                      "Email",
+                      "Alamat",
+                      "Status",
+                    ].map((v,i) => (
+                      <div key={i} className="py-2">
+                        <label htmlFor="name" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                          {v}
+                        </label>
+                        <input id="name" className="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder={v} />
+                      </div>
+                    ))}
+                  </div>
+                  
+                </div>
+
+                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                  <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"> Simpan </button>
+                  <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancel </button>
+                </div>
               </div>
             </Modal>
           </div>
@@ -82,7 +98,7 @@ export default function DataKaryawan() {
                     <th className="py-3 px-6 text-center">Jumlah Pertanyaan</th>
                     <th className="py-3 px-6 text-center">Jumlah Digunakan</th>
                     <th className="py-3 px-6 text-center">Status</th>
-                    <th className="py-3 px-6 text-center">Actions</th>
+                    <th className="py-3 px-6 text-center w-16">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 text-sm font-light">

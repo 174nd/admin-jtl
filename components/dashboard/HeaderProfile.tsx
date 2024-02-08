@@ -25,7 +25,7 @@ export default function HeaderProfile() {
         <span className="lg:pl-1 block">Andi Lewis Pratama</span>
       </button>
 
-      <div className={(dropdown ? `block ` : `hidden `) + `absolute md:right-0 md:left-auto left-0 mt-2 w-60 transition-transform ease-in-out duration-300`}>
+      <div className={(dropdown ? `block ` : `hidden `) + ` absolute md:right-0 md:left-auto left-0 mt-2 w-60 transition-transform ease-in-out duration-300`}>
         <div className="bg-white rounded-xl overflow-hidden shadow-lg">
           <div className="text-center px-6 py-4 border-b bg-gradient-to-br from-sky-300 via-sky-400 to-blue-500">
             <FaUserCircle className="h-24 w-24 text-white mx-auto" />

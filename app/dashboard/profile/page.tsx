@@ -1,5 +1,8 @@
 "use client";
 
+import ModalProfile from "@/components/dashboard/ModalProfile";
+import Button from "@/components/ui/Button";
+import { InputImagePreview } from "@/components/ui/Input";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -13,7 +16,8 @@ import {
 
 
 export default function Profile() {
-  const { setHeaderBar, setSidebarActiveKey } = useHeaderSidebarContext();
+  const { setHeaderBar, setSidebarActiveKey, addModal, removeModal } = useHeaderSidebarContext();
+  const [openModal, setOpenModal] = useState<boolean>(false);
   useEffect(() => {
     setHeaderBar({
       pageName: "Profile",
@@ -33,10 +37,30 @@ export default function Profile() {
             />
           </div>
           <div className="flex flex-col items-center -mt-20">
-            <Image alt="" width={300} height={300}
+
+
+          <InputImagePreview value={`https://vojislavd.com/ta-template-demo/assets/img/profile.jpg`} className="w-40 border-4 border-white rounded-full"/>
+
+          {/* <button 
+            className="relative overflow-hidden group "
+            onClick={() => {inputRef.current.click()}}
+          >
+            <Image width={300} height={300} alt='' className="h-full w-full" src={imageProfile}/>
+            <input type="file" accept="image/*" ref={inputRef} className="hidden" onChange={(e) => {
+              const file = e.target.files![0];
+              const reader = new FileReader();
+              reader.onload = (e) => setImageProfile(e.target!.result as string);
+              reader.readAsDataURL(file as Blob);
+            }} />
+            <span className="absolute top-0 opacity-0 group-hover:opacity-100 flex transition-all items-center justify-center h-full w-full bg-gray-500/50 text-white">Change Image</span>
+          </button> */}
+
+
+
+            {/* <Image alt="" width={300} height={300}
               src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg"
               className="w-40 border-4 border-white rounded-full"
-            />
+            /> */}
             <div className="flex items-center space-x-2 mt-2">
               <p className="text-center text-2xl">Shinta Amelia Rahmah</p>
             </div>
@@ -46,6 +70,14 @@ export default function Profile() {
             <p className="text-sm text-gray-500">Fungsional</p>
           </div>
         </div>
+
+
+        
+        <Button className="w-full rounded-lg" onClick={() => {setOpenModal(!openModal); addModal()}}>
+          Edit Profile
+        </Button>
+
+        <ModalProfile openModal={openModal} closeModal={() => {setOpenModal(!openModal); removeModal()}}/>
 
         
 

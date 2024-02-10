@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Profile Karyawan - JTL admin dashboard",
+  title: "Jabatan - JTL admin dashboard",
   description: "NextJs admin dashboard created by Andi",
   icons: "/logo.svg"
 };
 
-export default function PenilaianKinerjaLayout({children}: {children: React.ReactNode}) {
+export default function DataKaryawanLayout({children}: {children: React.ReactNode}) {
   return children;
 }

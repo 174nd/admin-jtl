@@ -12,12 +12,6 @@ export default function Modal({ children, openModal, closeModal }: ModalType) {
   const { removeModal } = useHeaderSidebarContext();
 
   const wrapperRef = useRef<any>(null);
-
-  const onCloseModal = () => {
-    closeModal();
-    removeModal();
-  };
-
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (
@@ -25,11 +19,14 @@ export default function Modal({ children, openModal, closeModal }: ModalType) {
         wrapperRef.current?.children &&
         !Array.from(wrapperRef.current.children)
         .reduce((r,d: any) => r || d.contains(event.target), false)
-      ) onCloseModal();
+      ) {
+        closeModal();
+        removeModal();
+      }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [wrapperRef, openModal, removeModal, onCloseModal]);
+  }, [wrapperRef, openModal, closeModal, removeModal]);
 
   return (
     <motion.div 

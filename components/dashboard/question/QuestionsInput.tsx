@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import AnswerKeyDetail from './AnswerKeyDetail';
 import { DragDropContext, Draggable, DropResult, Droppable } from '@hello-pangea/dnd';
 import { MdDragIndicator } from 'react-icons/md';
-import Textarea from '@/components/Textarea';
+import { TextareaAutoHeight } from '@/components/ui/Textarea';
 
 export type QuestionType = {
   id: string;
@@ -58,7 +57,7 @@ export default function QuestionsInput({data}: {data: QuestionType[]}) {
                             <div className={`flex items-center justify-between ${question.answerKeys.length > 0 && `pb-4`} gap-3`}>
                               <div className="w-full">
                                 <p className="mb-0 text-base font-semibold text-gray-500">Pertanyaan {questionIndex + 1}</p>
-                                <Textarea className='w-full focus:mt-2' value={question.question}/>
+                                <TextareaAutoHeight className='w-full border-transparent focus:mt-2' value={question.question}/>
                               </div>
                               
                               <span {...dragProv.dragHandleProps} className='w-6'>
@@ -71,8 +70,7 @@ export default function QuestionsInput({data}: {data: QuestionType[]}) {
                                     {dragProv => (
                                       <div  {...dragProv.draggableProps}  ref={dragProv.innerRef} className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 border-sky-500 group/answer flex items-center justify-between gap-4`} key={answerIndex}>
                                         
-                                        <Textarea className='w-full !p-0 transition-none border-0 focus:shadow-none' value={answer.label}/>
-                                        {/* <p className={`text-left font-normal transition-colors duration-300  text-black`}>{answer.label}</p> */}
+                                        <TextareaAutoHeight className='w-full !p-0 transition-none border-0 focus:!shadow-none' value={answer.label}/>
 
                                         <span className='flex justify-between items-center gap-2'>
                                           <span {...dragProv.dragHandleProps}>

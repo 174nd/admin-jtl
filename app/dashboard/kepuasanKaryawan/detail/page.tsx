@@ -1,7 +1,7 @@
 "use client";
-import Dropdown from "@/components/Dropdown";
-import Input from "@/components/Input";
-import Modal from "@/components/Modal";
+import Dropdown from "@/components/ui/Dropdown";
+import Input from "@/components/ui/Input";
+import Modal from "@/components/ui/Modal";
 import QuestionsDetail from "@/components/dashboard/question/QuestionsDetail";
 import QuestionsInput from "@/components/dashboard/question/QuestionsInput";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";

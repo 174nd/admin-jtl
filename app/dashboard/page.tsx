@@ -8,10 +8,10 @@ import Link from "next/link";
 import { FaRegEye, FaPencilAlt, FaUser, FaUserPlus } from "react-icons/fa";
 import { FaMoneyBills } from 'react-icons/fa6';
 import { MdOutlineBarChart } from 'react-icons/md';
-import BarChart from '@/components/BarChart';
+import BarChart from '@/components/ui/BarChart';
 import { randomNumberArray } from '@/libs/randomNumber';
-import LineChart from '@/components/LineChart';
-import Button from '@/components/Button';
+import LineChart from '@/components/ui/LineChart';
+import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 
 

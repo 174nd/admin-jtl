@@ -1,5 +1,5 @@
-import { ButtonLink } from "@/components/Button";
-import Input from "@/components/Input";
+import { ButtonLink } from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import Image from "next/image";
 import { TbDoorExit } from "react-icons/tb";
 

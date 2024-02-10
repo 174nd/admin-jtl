@@ -1,8 +1,8 @@
 "use client";
 
-import Dropdown from "@/components/Dropdown";
-import Input from "@/components/Input";
-import Modal from "@/components/Modal";
+import Dropdown from "@/components/ui/Dropdown";
+import Input from "@/components/ui/Input";
+import Modal from "@/components/ui/Modal";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,16 +1,15 @@
 "use client";
 
-import Dropdown from "@/components/Dropdown";
-import Input from "@/components/Input";
-import Modal from "@/components/Modal";
-import Select from "@/components/Select";
+import ModalProfile from "@/components/dashboard/ModalProfile";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import { FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
-import { ImCross } from "react-icons/im";
 
 
 export default function DataKaryawan() {
@@ -25,80 +24,30 @@ export default function DataKaryawan() {
     <div className="my-4 flex flex-row space-y-0 space-x-4">
       <div className="w-full bg-white rounded-lg shadow-xl mt-4 p-8">
         <div className="mt-2">
-          <div className="flex justify-between items-center my-4 md:mt-0">
-            <div className="right-0 relative flex items-center">
-              <span className="absolute">
-                <FaMagnifyingGlass className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600" />
-              </span>
-              <Input type="text" className="block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 " placeholder="Search" />
-
-              <div className="md:ml-4">
-                {/* <Dropdown placeholder="Pilih Divisi" className="w-54" data={[
-                  {value: "X1"},
-                  {value: "X2"},
-                  {value: "X3"},
-                ]} /> */}
-
-                <Select placeholder="Pilih" className="w-full" data={[
-                  {value: "X1"},
-                  {value: "X2"},
-                  {value: "X3"},
-                ]} />
+          <div className="flex flex-col md:flex-row md:justify-between items-center my-4 md:mt-0 gap-3">
+            <div className="flex flex-col md:flex-row w-full gap-3">
+              <div className="right-0 relative flex items-center">
+                <span className="absolute">
+                  <FaMagnifyingGlass className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600" />
+                </span>
+                <Input type="text" className="block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 " placeholder="Search" />
               </div>
+
+                <Select placeholder="Pilih Divisi" className="w-full md:w-48 md:ml-4" data={[
+                  {value: "Divisi 1"},
+                  {value: "Divisi 2"},
+                  {value: "Divisi 3"},
+                ]} />
             </div>
 
-            <button 
-              className="flex justify-center h-3/4 items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-xl w-48 text-white py-2 duration-300"
-              onClick={() => {
-                setOpenModal(!openModal);
-                addModal();
-              }}
-            >
+
+            <Button className="w-full md:w-64" onClick={() => {setOpenModal(!openModal); addModal()}}>
               <FaUserPlus/>
               Tambah Karyawan
-            </button>
-            
-            <Modal openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
-              <div className="w-full max-w-xl bg-white shadow-md rounded-lg border">
-                <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
-                  <h2 className="text-xl font-semibold text-gray-600">{"Tambah Karyawan"}</h2>
-                  <button role="button" onClick={() => {
-                    setOpenModal(!openModal);
-                    removeModal();
-                  }} className="cursor-pointertext-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"> 
-                    <ImCross width={20} height={20} />
-                  </button>
-                </div>
+            </Button>
 
-                <div className="py-5 px-8">
-                  <div className="grid grid-cols-1 gap-5 divide-y">
-                    {[
-                      "Nama Lengkap",
-                      "Tanggal Lahir",
-                      "Jabatan",
-                      "Departemen",
-                      "No. Hp",
-                      "Email",
-                      "Alamat",
-                      "Status",
-                    ].map((v,i) => (
-                      <div key={i} className="py-2">
-                        <label htmlFor="name" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                          {v}
-                        </label>
-                        <input id="name" className="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder={v} />
-                      </div>
-                    ))}
-                  </div>
-                  
-                </div>
+            <ModalProfile openModal={openModal} closeModal={() => {setOpenModal(!openModal); removeModal()}}/>
 
-                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"> Simpan </button>
-                  <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancel </button>
-                </div>
-              </div>
-            </Modal>
           </div>
 
           <div className=" bg-gray-50 border-gray-300 rounded-lg shadow-xl">
@@ -168,7 +117,7 @@ export default function DataKaryawan() {
                           <Link href={"/dashboard/dataKaryawan/profile"} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <FaRegEye/>
                           </Link>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" onClick={() => {setOpenModal(!openModal); addModal()}}>
                             <FaPencilAlt/>
                           </div>
                         </div>

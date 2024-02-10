@@ -1,13 +1,19 @@
+import moment from 'moment';
 import Image from 'next/image';
 import React, { useState } from 'react';
 export type QuestionType = {
-  id: string;
   question: string;
   questionPoint: number;
   answerKeys: AnswerKeyType[]
 };
 type AnswerKeyType = {id: string, label: string, point: number, isSelected: boolean};
-export default function QuestionsDetail({data}: {data: QuestionType[]}) {
+export default function QuestionsDetail({data}: {data: {
+  name: string,
+  position: string,
+  time: Date,
+
+  questions:QuestionType[],
+}}) {
   return (
 
 
@@ -21,10 +27,10 @@ export default function QuestionsDetail({data}: {data: QuestionType[]}) {
                   <Image width={300} height={300} alt='' className="h-full w-full rounded-xl" src='https://vojislavd.com/ta-template-demo/assets/img/profile.jpg'/>
                 </div>
                 <div className="flex flex-col gap-1 mt-2 sm:gap-0 mb-2 sm:mb-0">
-                  <h4 className="text-2xl font-bold text-center sm:text-left text-black sm:text-white">Adela Parkson</h4>
+                  <h4 className="text-2xl font-bold text-center sm:text-left text-black sm:text-white">{data.name}</h4>
                   <div className="mt-2">
-                    <p className="text-sm font-normal text-center sm:text-left sm:text-gray-600">Product Manager</p>
-                    <p className="text-xs font-normal text-center sm:text-left sm:text-gray-600">20 Desember 2023</p>
+                    <p className="text-sm font-normal text-center sm:text-left sm:text-gray-600">{data.position}</p>
+                    <p className="text-xs font-normal text-center sm:text-left sm:text-gray-600">{moment(data.time).format('Do MMMM YYYY')}</p>
 
                   </div>
                 </div>
@@ -40,7 +46,7 @@ export default function QuestionsDetail({data}: {data: QuestionType[]}) {
         </div>
     </div> 
     <div className="grid grid-cols-1 gap-5 divide-y">
-      {data.map((question, questionIndex) => (
+      {data.questions.map((question, questionIndex) => (
         <div className={`pt-4 ${question.answerKeys.length > 0 && `pb-2`} group/question`} key={questionIndex}>
           <div className={`flex items-center justify-between ${question.answerKeys.length > 0 && `pb-4`} gap-3`}>
             <div className="w-full">

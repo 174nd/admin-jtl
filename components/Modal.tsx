@@ -1,4 +1,5 @@
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
+import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 
 type ModalType = {
@@ -31,10 +32,19 @@ export default function Modal({ children, openModal, closeModal }: ModalType) {
   }, [wrapperRef, openModal, removeModal, onCloseModal]);
 
   return (
-    <div className={(openModal ? `fixed` : `hidden`) + ` inset-0 z-50 bg-black/30 backdrop-blur-sm overflow-y-scroll !m-0`}>
+    <motion.div 
+    animate={openModal ? `visible` : `hidden`}
+    transition={{duration: 0.2, ease: 'easeInOut'}}
+    variants={{
+      hidden  : { opacity: 0 },
+      visible : { opacity: 1 },
+    }} className={`${openModal ? `fixed` : `hidden`} inset-0 z-50 bg-black/30 backdrop-blur-sm overflow-y-scroll !m-0`}>
       <div className="w-full overflow-hidden flex justify-center mx-auto sm:my-10" ref={wrapperRef}>
         {children}
       </div>
-    </div>
+    </motion.div>
+
+
+
   );
 }

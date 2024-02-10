@@ -3,13 +3,13 @@
 import Dropdown from "@/components/Dropdown";
 import Input from "@/components/Input";
 import Modal from "@/components/Modal";
-import Select from "@/components/Select";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaUserPlus } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 
 
@@ -17,8 +17,8 @@ export default function DataKaryawan() {
   const { setHeaderBar, setSidebarActiveKey, addModal, removeModal } = useHeaderSidebarContext();
   const [openModal, setOpenModal] = useState<boolean>(false);
   useEffect(() => {
-    setHeaderBar({pageName: "Data Karyawan", breadCrumb: ["Dashboard", "Data Karyawan"]});
-    setSidebarActiveKey("Data Karyawan");
+    setHeaderBar({pageName: "Penilaian Kinerja", breadCrumb: ["Dashboard", "Penilaian Kinerja"]});
+    setSidebarActiveKey("Penilaian Kinerja");
   }, [setHeaderBar, setSidebarActiveKey])
 
   return (
@@ -30,21 +30,8 @@ export default function DataKaryawan() {
               <span className="absolute">
                 <FaMagnifyingGlass className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600" />
               </span>
-              <Input type="text" className="block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 " placeholder="Search" />
+              <Input type="text" className="block w-full py-1.5 pr-5 md:w-80 pl-11 rtl:pr-11 rtl:pl-5 " placeholder="Search"/>
 
-              <div className="md:ml-4">
-                {/* <Dropdown placeholder="Pilih Divisi" className="w-54" data={[
-                  {value: "X1"},
-                  {value: "X2"},
-                  {value: "X3"},
-                ]} /> */}
-
-                <Select placeholder="Pilih" className="w-full" data={[
-                  {value: "X1"},
-                  {value: "X2"},
-                  {value: "X3"},
-                ]} />
-              </div>
             </div>
 
             <button 
@@ -54,14 +41,14 @@ export default function DataKaryawan() {
                 addModal();
               }}
             >
-              <FaUserPlus/>
-              Tambah Karyawan
-            </button>
+              <MdFormatListBulletedAdd/>
+              Buat Form
+          </button>
             
             <Modal openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
-              <div className="w-full max-w-xl bg-white shadow-md rounded-lg border">
+              <div className="w-full max-w-2xl bg-white shadow-md rounded-lg border">
                 <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
-                  <h2 className="text-xl font-semibold text-gray-600">{"Tambah Karyawan"}</h2>
+                  <h2 className="text-xl font-semibold text-gray-600">Form Kepuasan Karyawan</h2>
                   <button role="button" onClick={() => {
                     setOpenModal(!openModal);
                     removeModal();
@@ -73,7 +60,7 @@ export default function DataKaryawan() {
                 <div className="py-5 px-8">
                   <div className="grid grid-cols-1 gap-5 divide-y">
                     {[
-                      "Nama Lengkap",
+                      "Nama Form",
                       "Tanggal Lahir",
                       "Jabatan",
                       "Departemen",
@@ -106,71 +93,63 @@ export default function DataKaryawan() {
               <table className="min-w-max w-full table-auto">
                 <thead>
                   <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                    <th className="py-3 px-6 text-left">Nama</th>
-                    <th className="py-3 px-6 text-center">Jabatan</th>
-                    <th className="py-3 px-6 text-center">Divisi</th>
-                    <th className="py-3 px-6 text-center">Actions</th>
+                    <th className="py-3 px-6 text-left">Tanggal</th>
+                    <th className="py-3 px-6 text-left">Nama Form</th>
+                    <th className="py-3 px-6 text-center">Jumlah Pertanyaan</th>
+                    <th className="py-3 px-6 text-center">Jumlah Digunakan</th>
+                    <th className="py-3 px-6 text-center">Status</th>
+                    <th className="py-3 px-6 text-center w-16">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 text-sm font-light">
                   {[
                     {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
+                      date: "30 April 2024",
+                      name: "Form ABCDE1",
+                      questionAmount: 30,
+                      usingAmount: 30,
+                      status: true,
                     }, {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
-                    }, {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
-                    }, {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
-                    }, {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
-                    }, {
-                      image: "https://randomuser.me/api/portraits/men/1.jpg",
-                      name: "Eshal Rosas",
-                      jabatan: "Fungsional (Plt Asisten Manager)",
-                      divisi: "Teknik dan Perencanaan (Pusat)",
+                      date: "30 April 2024",
+                      name: "Form ABCDE1",
+                      questionAmount: 30,
+                      usingAmount: 100,
+                      status: false,
                     }
                   ].map((value, index) => (
                     <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
+                    <td className="py-3 px-6 text-left">
+                      <div className="flex items-center">
+                          <span>{value.date}</span>
+                        </div>
+                      </td>
                       <td className="py-3 px-6 text-left">
                         <div className="flex items-center">
-                          <div className="mr-2">
-                            <Image width={6} height={6} alt={value.name} className="w-6 h-6 rounded-full" src={value.image}/>
-                          </div>
                           <span>{value.name}</span>
                         </div>
                       </td>
-                      <td className="py-3 px-6 text-center">
-                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                        {value.jabatan}
-                        </span>
+                      <td className="py-3 px-6 text-left">
+                        <div className="flex items-center justify-center">
+                          <span className="bg-blue-200 text-blue-600 py-1 px-3 rounded-full text-xs">{value.questionAmount} Pertanyaan</span>
+                        </div>
                       </td>
-                      <td className="py-3 px-6 text-center">
-                        <span>{value.divisi}</span>
+                      <td className="py-3 px-6 text-left">
+                        <div className="flex items-center justify-center">
+                          <span className="bg-sky-200 text-sky-600 py-1 px-3 rounded-full text-xs">{value.usingAmount}x Digunakan</span>
+                        </div>
+                      </td>
+                      <td className="py-3 px-6 text-left">
+                        <div className="flex items-center justify-center">
+                        <span className={(value.status ? `bg-green-200 text-green-600` : `bg-red-200 text-red-600`) + ` py-1 px-3 rounded-full text-xs`}>
+                        {value.status ? `Active` : `Inactive`}
+                        </span>
+                        </div>
                       </td>
                       <td className="py-3 px-6 text-center">
                         <div className="flex item-center justify-center">
-                          <Link href={"/dashboard/dataKaryawan/profile"} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                          <Link href={"/dashboard/penilaianKinerja/detail"} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <FaRegEye/>
                           </Link>
-                          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                            <FaPencilAlt/>
-                          </div>
                         </div>
                       </td>
                     </tr>

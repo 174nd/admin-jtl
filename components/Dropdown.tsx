@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
-export default function Dropdown({className, placeholder, data}: {className?: string | undefined, placeholder?: string; data: {value: string, label?: string, status?: boolean}[]}) {
+export default function Dropdown({className, placeholder, data}: {className?: string | undefined, placeholder?: string; data: {value: string, label?: string, status?: boolean, onSelectedClass?: string, class?: string}[]}) {
   const selectedIndex = data.findIndex(x => x.status), selectedData = selectedIndex != undefined ? data[selectedIndex] : undefined;
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [selectId, setSelectId] = useState<number | null>(selectedIndex ?? null);
@@ -31,7 +31,7 @@ export default function Dropdown({className, placeholder, data}: {className?: st
         // onBlur={() => dropdown && setDropdown(false)}
         onClick={() => setDropdown(!dropdown)}
         className={(className && className + ' ') + `inline-flex items-center justify-between px-4 py-2 w-52 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded shadow-sm  focus:outline-none focus:border-blue-500`}>
-        <span className={`mr-2 w-full text-left`}>{dropdownValue}</span>
+        <span className={`mr-2 w-full text-base font-normal text-left`}>{dropdownValue}</span>
         <FaChevronDown className={classNames("w-3 h-3 mt-1 ml-2 -mr-1 duration-300", dropdown && "rotate-180")} />
       </button>
       <div
@@ -40,7 +40,7 @@ export default function Dropdown({className, placeholder, data}: {className?: st
         {data.map((v,i) => (
           <button
             key={i}
-            className={classNames("block px-4 py-2 w-full text-left text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded", selectId == i && "bg-gray-100")}
+            className={classNames("block px-4 py-2 w-full text-left text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded", selectId == i && `bg-gray-100 ${v.onSelectedClass}`, v.onSelectedClass)}
             onClick={() => onSelected(i, v.value)}
           >{v.label ?? v.value}</button>
         ))}

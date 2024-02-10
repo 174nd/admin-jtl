@@ -1,6 +1,6 @@
+import { ButtonLink } from "@/components/Button";
 import Input from "@/components/Input";
 import Image from "next/image";
-import Link from "next/link";
 import { TbDoorExit } from "react-icons/tb";
 
 export default function Login() {
@@ -23,11 +23,11 @@ export default function Login() {
           <form action="#" className="px-3 flex flex-col justify-center items-center w-full gap-3">
             <Input className="w-full" type="email" placeholder="email"/>
             <Input className="w-full" type="password" placeholder="password"/>
-            
-            <Link href="/dashboard" className="flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-xl w-full text-white py-2 duration-300">
+
+            <ButtonLink href="/dashboard" className="w-full">
               <TbDoorExit className="w-5 h-5 inline"/>
               Login
-            </Link>
+            </ButtonLink>
           </form>
         </div>
       </div>

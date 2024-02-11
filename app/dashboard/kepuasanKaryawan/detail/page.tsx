@@ -3,18 +3,13 @@ import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
 import QuestionsDetail from "@/components/dashboard/question/QuestionsDetail";
-import QuestionsInput from "@/components/dashboard/question/QuestionsInput";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaPencilAlt, FaRegEye, FaRegSave, FaUserPlus } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaRegEye, FaRegSave } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import {
-  MdDateRange,
-  MdOutlineSentimentVerySatisfied,
-  MdOutlineWorkHistory,
-} from "react-icons/md";
-import { TbDoorExit } from "react-icons/tb";
+import { MdDateRange } from "react-icons/md";
+import EmployeeQuestionsInput, { EmployeeQuestionType } from "@/components/dashboard/question/EmployeeQuestionsInput";
 
 
 
@@ -30,67 +25,80 @@ export default function ProfileKaryawan() {
     setSidebarActiveKey("Kepuasan Karyawan");
   }, [setHeaderBar, setSidebarActiveKey])
 
-  const questionData = [{
-    id: "ABCDE1",
-    question: 'Occaecat dolore consequat sint adipisicing reprehenderit aute eiusmod officia. Dolor nostrud velit voluptate qui. Fugiat amet elit pariatur elit anim ullamco aliquip ea commodo consectetur. Tempor cupidatat velit cillum consequat consequat proident Lorem sint duis proident id id elit.',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE11', label: 'Eu velit non quis ullamco culpa officia minim ut est cillum eiusmod ex. Commodo duis aliqua et deserunt proident et fugiat Lorem eu qui voluptate. Consectetur cupidatat commodo ad ex esse. Voluptate culpa incididunt irure labore laboris magna eu voluptate dolore tempor. Cillum sunt qui est deserunt nulla ad qui fugiat ad do. Culpa consequat anim eu exercitation.', point: 599, isSelected: false},
-      {id: 'ABCDE12', label: 'ABCDE12', point: 5, isSelected: false},
-      {id: 'ABCDE13', label: 'ABCDE13', point: 5, isSelected: true},
-      {id: 'ABCDE14', label: 'ABCDE14', point: 5, isSelected: false},
-    ],
-  }, {
-    id: 'ABCDE2',
-    question: 'ABCDE2',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE21', label: 'ABCDE21', point: 5, isSelected: true},
-      {id: 'ABCDE22', label: 'ABCDE22', point: 5, isSelected: false},
-      {id: 'ABCDE23', label: 'ABCDE23', point: 5, isSelected: false},
-      {id: 'ABCDE24', label: 'ABCDE24', point: 5, isSelected: false},
-    ],
-  }, {
-    id: 'ABCDE3',
-    question: 'ABCDE3',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE31', label: 'ABCDE31', point: 5, isSelected: false},
-      {id: 'ABCDE32', label: 'ABCDE32', point: 5, isSelected: false},
-      {id: 'ABCDE33', label: 'ABCDE33', point: 5, isSelected: false},
-      {id: 'ABCDE34', label: 'ABCDE34', point: 5, isSelected: true},
-    ],
-  }, {
-    id: 'ABCDE4',
-    question: 'ABCDE4',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE41', label: 'ABCDE41', point: 5, isSelected: false},
-      {id: 'ABCDE42', label: 'ABCDE42', point: 5, isSelected: true},
-      {id: 'ABCDE43', label: 'ABCDE43', point: 5, isSelected: false},
-      {id: 'ABCDE44', label: 'ABCDE44', point: 5, isSelected: false},
-    ],
-  }, {
-    id: 'ABCDE5',
-    question: 'ABCDE5',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE51', label: 'ABCDE51', point: 5, isSelected: false},
-      {id: 'ABCDE52', label: 'ABCDE52', point: 5, isSelected: false},
-      {id: 'ABCDE53', label: 'ABCDE53', point: 5, isSelected: true},
-      {id: 'ABCDE54', label: 'ABCDE54', point: 5, isSelected: false},
-    ],
-  }, {
-    id: 'ABCDE6',
-    question: 'ABCDE6',
-    questionPoint: 10,
-    answerKeys: [
-      {id: 'ABCDE61', label: 'ABCDE61', point: 5, isSelected: false},
-      {id: 'ABCDE62', label: 'ABCDE62', point: 5, isSelected: false},
-      {id: 'ABCDE63', label: 'ABCDE63', point: 5, isSelected: false},
-      {id: 'ABCDE64', label: 'ABCDE64', point: 5, isSelected: true},
-    ],
-  }];
+  
+  const [questions, setQuestions] = useState<EmployeeQuestionType[]>([{
+      id: `ABCDE1`,
+      title : `ABCDE1`,
+      questions: [{
+        id: 'ABCDE11',
+        question: 'ABCDE11',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE111', label: 'ABCDE111', point: 5, isSelected: true},
+          {id: 'ABCDE112', label: 'ABCDE112', point: 5, isSelected: false},
+          {id: 'ABCDE113', label: 'ABCDE113', point: 5, isSelected: false},
+          {id: 'ABCDE114', label: 'ABCDE114', point: 5, isSelected: false},
+        ],
+      }, {
+        id: 'ABCDE12',
+        question: 'ABCDE12',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE121', label: 'ABCDE121', point: 5, isSelected: true},
+          {id: 'ABCDE122', label: 'ABCDE122', point: 5, isSelected: false},
+          {id: 'ABCDE123', label: 'ABCDE123', point: 5, isSelected: false},
+          {id: 'ABCDE124', label: 'ABCDE124', point: 5, isSelected: false},
+        ],
+      }]
+    }, {
+      id: `ABCDE2`,
+      title : `ABCDE2`,
+      questions: [{
+        id: 'ABCDE21',
+        question: 'ABCDE21',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE211', label: 'ABCDE211', point: 5, isSelected: true},
+          {id: 'ABCDE212', label: 'ABCDE212', point: 5, isSelected: false},
+          {id: 'ABCDE213', label: 'ABCDE213', point: 5, isSelected: false},
+          {id: 'ABCDE214', label: 'ABCDE214', point: 5, isSelected: false},
+        ],
+        }, {
+        id: 'ABCDE22',
+        question: 'ABCDE22',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE221', label: 'ABCDE221', point: 5, isSelected: true},
+          {id: 'ABCDE222', label: 'ABCDE222', point: 5, isSelected: false},
+          {id: 'ABCDE223', label: 'ABCDE223', point: 5, isSelected: false},
+          {id: 'ABCDE224', label: 'ABCDE224', point: 5, isSelected: false},
+        ],
+      }]
+    }, {
+      id: `ABCDE3`,
+      title : `ABCDE3`,
+      questions: [{
+        id: 'ABCDE31',
+        question: 'ABCDE31',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE311', label: 'ABCDE311', point: 5, isSelected: true},
+          {id: 'ABCDE312', label: 'ABCDE312', point: 5, isSelected: false},
+          {id: 'ABCDE313', label: 'ABCDE313', point: 5, isSelected: false},
+          {id: 'ABCDE314', label: 'ABCDE314', point: 5, isSelected: false},
+        ],
+        }, {
+        id: 'ABCDE32',
+        question: 'ABCDE32',
+        questionPoint: 10,
+        answerKeys: [
+          {id: 'ABCDE321', label: 'ABCDE321', point: 5, isSelected: true},
+          {id: 'ABCDE322', label: 'ABCDE322', point: 5, isSelected: false},
+          {id: 'ABCDE323', label: 'ABCDE323', point: 5, isSelected: false},
+          {id: 'ABCDE324', label: 'ABCDE324', point: 5, isSelected: false},
+        ],
+      }]
+  }]);
   return (
     <div className="my-4 flex flex-col md:flex-row space-y-0 space-x-0 md:space-x-4">
       <div className="flex flex-col w-full md:w-1/2 gap-4">
@@ -286,22 +294,21 @@ export default function ProfileKaryawan() {
             </div>
 
             <div className="py-5 px-8">
-              <QuestionsDetail data={{
+              {/* <QuestionsDetail data={{
                 name: `ABCDE1234`,
                 position: `ABCDE1234`,
                 time: new Date(),
-                questions:questionData,
-                }} />
+                // questions:questionData.shift()?.questions,
+                }} /> */}
             </div>
           </div>
         </Modal>
       </div>
 
-      <div className="flex flex-col w-full md:w-1/2 gap-4">
-        <div className="bg-white rounded-lg shadow-xl block overflow-x-auto md:mt-0 p-8 order-2">
-          <h4 className="text-xl text-gray-900 font-bold"></h4>
-          <QuestionsInput data={questionData} />
-        </div>
+      <div className="w-full md:w-1/2">
+          <EmployeeQuestionsInput data={questions} setData={e => {
+            setQuestions(e);
+          }} />
       </div>
     </div>
   );

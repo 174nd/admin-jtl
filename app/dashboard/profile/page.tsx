@@ -38,8 +38,7 @@ export default function Profile() {
           </div>
           <div className="flex flex-col items-center -mt-20">
 
-
-          <InputImagePreview value={`https://vojislavd.com/ta-template-demo/assets/img/profile.jpg`} className="w-40 border-4 border-white rounded-full"/>
+          <Image width={300} height={300} alt='' className="h-full w-40 border-4 border-white rounded-full" src={`https://vojislavd.com/ta-template-demo/assets/img/profile.jpg`}/>
 
           {/* <button 
             className="relative overflow-hidden group "

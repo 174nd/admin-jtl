@@ -23,7 +23,6 @@ export function TextareaAutoHeight(props: React.DetailedHTMLProps<React.InputHTM
       textAreaRef.current.style.height = "0px";
       textAreaRef.current.value = xxxx;
       const scrollHeight = textAreaRef.current.scrollHeight;
-      console.log('xxx', scrollHeight, already)
       // textAreaRef.current.style.height = scrollHeight + "px";
       textAreaRef.current.style.height = (scrollHeight > 0 ? scrollHeight + "px" : already);
 

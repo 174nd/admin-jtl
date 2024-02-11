@@ -13,8 +13,8 @@ const karla = Karla({
 })
 
 export const metadata: Metadata = {
-  title: "JTL admin dashboard",
-  description: "NextJs admin dashboard created by Andi",
+  title: "Login - Sistem Informasi Manajemen JTL",
+  description: "Sistem Informasi Manajemen Jasa Tirta Luhur",
   icons: "/logo.svg"
 };
 

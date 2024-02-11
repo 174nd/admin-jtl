@@ -36,7 +36,7 @@ export default function Modal({ children, openModal, closeModal }: ModalType) {
       hidden  : { opacity: 0 },
       visible : { opacity: 1 },
     }} className={`${openModal ? `fixed` : `hidden`} inset-0 z-50 bg-black/30 backdrop-blur-sm overflow-y-scroll !m-0`}>
-      <div className="w-full overflow-hidden flex justify-center mx-auto sm:my-10" ref={wrapperRef}>
+      <div className="w-full flex justify-center mx-auto sm:my-10" ref={wrapperRef}>
         {children}
       </div>
     </motion.div>

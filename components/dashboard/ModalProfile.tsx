@@ -6,12 +6,23 @@ import Image from "next/image";
 import Select from '../ui/Select';
 import Textarea from '../ui/Textarea';
 
-export default function ModalProfile({openModal, closeModal}: {openModal: boolean, closeModal: () => void}) {
+type userData = {
+  namaLengkap: string;
+  tanggalLahir: Date;
+  jabatan: string;
+  departemen: string;
+  lokasi: string;
+  email: string;
+  alamat: string;
+  status: string;
+}
+
+export default function ModalProfile({openModal, closeModal, data}: {data?: userData, openModal: boolean, closeModal: () => void}) {
   return (
     <Modal openModal={openModal} closeModal={closeModal}>
       <div className="w-full max-w-xl bg-white shadow-md rounded-lg border">
         <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
-          <h2 className="text-xl font-semibold text-gray-600">Tambah Karyawan</h2>
+          <h2 className="text-xl font-semibold text-gray-600">{data != undefined ? `Ubah Data Karyawan` : `Tambah Karyawan`}</h2>
           <button role="button" onClick={closeModal} className="cursor-pointertext-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"> 
             <ImCross width={20} height={20} />
           </button>

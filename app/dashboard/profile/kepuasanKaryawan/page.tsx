@@ -1,9 +1,10 @@
 "use client";
 
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import Questions from "@/components/dashboard/question/Questions";
+import QuestionsSelect from "@/components/dashboard/question/QuestionsSelect";
+import { QuestionType } from "@/components/dashboard/question/question.type";
 
 
 
@@ -15,6 +16,63 @@ export default function PenilaianKinerja() {
       breadCrumb: ["Dashboard", "Profile", "Form Kepuasan Karyawan"],
     });
   }, [setHeaderBar, setSidebarActiveKey])
+
+  const [data, setData] = useState<QuestionType[]>([{
+    id: `ABCDE1`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE11', label: 'A. True', point: 5},
+      {id: 'ABCDE12', label: 'A. True', point: 5},
+      {id: 'ABCDE13', label: 'A. True', point: 5},
+      {id: 'ABCDE14', label: 'A. True', point: 5},
+    ],
+  }, {
+    id: `ABCDE2`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE25', label: 'A. True', point: 5},
+      {id: 'ABCDE26', label: 'A. True', point: 5},
+      {id: 'ABCDE27', label: 'A. True', point: 5},
+      {id: 'ABCDE28', label: 'A. True', point: 5},
+    ],
+  }, {
+    id: `ABCDE3`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE39', label: 'A. True', point: 5},
+      {id: 'ABCDE310', label: 'A. True', point: 5},
+      {id: 'ABCDE311', label: 'A. True', point: 5},
+      {id: 'ABCDE312', label: 'A. True', point: 5},
+    ],
+  }, {
+    id: `ABCDE4`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE413', label: 'A. True', point: 5},
+      {id: 'ABCDE414', label: 'A. True', point: 5},
+      {id: 'ABCDE415', label: 'A. True', point: 5},
+      {id: 'ABCDE416', label: 'A. True', point: 5},
+    ],
+  }, {
+    id: `ABCDE5`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE517', label: 'A. True', point: 5},
+      {id: 'ABCDE518', label: 'A. True', point: 5},
+      {id: 'ABCDE519', label: 'A. True', point: 5},
+      {id: 'ABCDE520', label: 'A. True', point: 5},
+    ],
+  }, {
+    id: `ABCDE6`,
+    question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
+    answerKeys: [
+      {id: 'ABCDE621', label: 'A. True', point: 5},
+      {id: 'ABCDE622', label: 'A. True', point: 5},
+      {id: 'ABCDE623', label: 'A. True', point: 5},
+      {id: 'ABCDE624', label: 'A. True', point: 5},
+    ],
+  }])
+
   return (
     
     <div className="my-4 flex flex-col md:flex-row space-y-0 space-x-0 md:space-x-4">
@@ -151,61 +209,9 @@ export default function PenilaianKinerja() {
       <div className="flex flex-col w-full md:w-2/3 ml-0">
         <div className="bg-white rounded-lg shadow-xl md:mt-0 mt-4 p-8">
           <h4 className="text-xl text-gray-900 font-bold mb-2">Form Kepuasan Karyawan</h4>
-          <Questions data={[{
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }, {
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }, {
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }, {
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }, {
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }, {
-            question: 'Ketika membuat aplikasi React menggunakan create-react-app, maka belum terdapat page routing. Pernyataan tersebut true or false?',
-            questionPoint: 10,
-            answerKeys: [
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-              {label: 'A. True', point: 5},
-            ],
-          }]} />
+
+          <QuestionsSelect data={data} setData={setData} />
+          {/* <Questions data={} /> */}
           <div className="py-4 border-t-2 border-teal-800 mt-6 flex justify-between gap-2">
             <button className="px-4 py-2 rounded-lg border-solid w-40 right-0 border-2 hover:border-red-500 hover:bg-transparent bg-red-500 group transition-all duration-300">
               <p className="text-white font-normal group-hover:text-black transition-colors duration-300">Batal</p>

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DragDropContext, Draggable, DropResult, Droppable } from '@hello-pangea/dnd';
 import { MdDragIndicator } from 'react-icons/md';
 import { TextareaAutoHeight } from '@/components/ui/Textarea';
 import { FaRegPlusSquare, FaRegTrashAlt } from 'react-icons/fa';
-import { AnswerKeyType, QuestionType } from './question.type';
 import { v4 as uuidv4 } from 'uuid';
+
+export type AnswerKeyType = {id: string, label: string, point: number};
+export type QuestionType = {
+  id: string;
+  question: string;
+  answerKeys: AnswerKeyType[]
+};
+
 
 export default function QuestionsInput({data: questions, setData: setQuestions}: {data: QuestionType[], setData: React.Dispatch<React.SetStateAction<QuestionType[]>>}) {
   // const [questions, setQuestions] = useState(questions);
@@ -15,11 +22,11 @@ export default function QuestionsInput({data: questions, setData: setQuestions}:
 
 
     if(type == "group"){
-      const reorderQuestions = [...questions];
-      const [removeQuestion] = reorderQuestions.splice(source.index, 1);
-      reorderQuestions.splice(destination.index, 0, removeQuestion);
+        const reorderQuestions = [...questions];
+        const [removeQuestion] = reorderQuestions.splice(source.index, 1);
+        reorderQuestions.splice(destination.index, 0, removeQuestion);
 
-      setQuestions(reorderQuestions);
+        setQuestions(reorderQuestions);
     }else{
       const sourceIndex = questions.findIndex(question => question.id == source.droppableId);
       const destinationIndex = questions.findIndex(question => question.id == destination.droppableId);
@@ -83,7 +90,7 @@ function Question({question, questionIndex, setQuestions, questions}: {question:
                 <div className={`flex items-center justify-between ${question.answerKeys.length > 0 && `pb-4`} gap-3`}>
                   <div className="w-full">
                     <p className="mb-0 text-base font-semibold text-gray-500">Pertanyaan {questionIndex + 1}</p>
-                    <TextareaAutoHeight className='w-full border-transparent focus:mt-2' value={question.question} placeholder='Pertanyaan' onChange={e => {
+                    <TextareaAutoHeight className='w-full border-transparent focus:mt-2' value={question.question} onChange={e => {
                       const onQuestion = [...questions];
                       onQuestion[questionIndex].question = e.target.value;
                       setQuestions(onQuestion);
@@ -129,7 +136,7 @@ function AnswerKey({questionIndex, answer, answerIndex, setQuestions, questions}
       {dragProv => (
         <div  {...dragProv.draggableProps}  ref={dragProv.innerRef} className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 border-sky-500 group/answer flex items-center justify-between gap-4`} key={answerIndex}>
           
-          <TextareaAutoHeight className='w-full !p-0 transition-none border-0 focus:!shadow-none' value={answer.label} placeholder='Jawaban' onChange={e => {
+          <TextareaAutoHeight className='w-full !p-0 transition-none border-0 focus:!shadow-none' value={answer.label} onChange={e => {
             const onQuestion = [...questions];
             onQuestion[questionIndex].answerKeys[answerIndex].label = e.target.value;
             setQuestions(onQuestion);

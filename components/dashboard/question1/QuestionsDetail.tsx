@@ -45,29 +45,29 @@ export default function QuestionsDetail({data}: {data: {
             <div className="mt-36 sm:mt-10 flex flex-col items-center">
             </div>
         </div>
-      <div className="grid grid-cols-1 gap-5 divide-y">
-        {data.questions.map((question, questionIndex) => (
-          <div className={`pt-4 ${question.answerKeys.length > 0 && `pb-2`} group/question`} key={questionIndex}>
-            <div className={`flex items-center justify-between ${question.answerKeys.length > 0 && `pb-4`} gap-3`}>
-              <div className="w-full">
-                <p className="mb-0 text-base font-semibold text-gray-500">Pertanyaan {questionIndex + 1}</p>
-                <p>{question.question}</p>
+        <div className="grid grid-cols-1 gap-5 divide-y">
+          {data.questions.map((question, questionIndex) => (
+            <div className={`pt-4 ${question.answerKeys.length > 0 && `pb-2`} group/question`} key={questionIndex}>
+              <div className={`flex items-center justify-between ${question.answerKeys.length > 0 && `pb-4`} gap-3`}>
+                <div className="w-full">
+                  <p className="mb-0 text-base font-semibold text-gray-500">Pertanyaan {questionIndex + 1}</p>
+                  <p>{question.question}</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                {question.answerKeys.map((answer, answerIndex) => (
+                      <div className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 ${answer.isSelected ? 'bg-sky-500' : `border-sky-500`} group/answer flex items-center justify-between gap-4`} key={answerIndex}>
+                        
+                        {/* <Textarea className='w-full !p-0 transition-none border-0 focus:shadow-none' value={answer.label}/> */}
+                        <p className={`text-left font-normal transition-colors duration-300 ${answer.isSelected ? 'text-white' : `text-black`}`}>{answer.label}</p>
+
+                        <span className={` py-1 px-3 rounded-full text-xs w-fit ${answer.isSelected ? 'bg-sky-600 text-sky-200' : `bg-sky-200 text-sky-600`}`}>{answer.point}</span>
+                      </div>
+                ))}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-              {question.answerKeys.map((answer, answerIndex) => (
-                    <div className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 ${answer.isSelected ? 'bg-sky-500' : `border-sky-500`} group/answer flex items-center justify-between gap-4`} key={answerIndex}>
-                      
-                      {/* <Textarea className='w-full !p-0 transition-none border-0 focus:shadow-none' value={answer.label}/> */}
-                      <p className={`text-left font-normal transition-colors duration-300 ${answer.isSelected ? 'text-white' : `text-black`}`}>{answer.label}</p>
-
-                      <span className={` py-1 px-3 rounded-full text-xs w-fit ${answer.isSelected ? 'bg-sky-600 text-sky-200' : `bg-sky-200 text-sky-600`}`}>{answer.point}</span>
-                    </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
     </>
   )
 }

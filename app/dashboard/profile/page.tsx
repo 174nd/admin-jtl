@@ -1,7 +1,7 @@
 "use client";
 
 import ModalProfile from "@/components/dashboard/ModalProfile";
-import Button from "@/components/ui/Button";
+import Button, { ButtonLink } from "@/components/ui/Button";
 import { InputImagePreview } from "@/components/ui/Input";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
@@ -77,6 +77,11 @@ export default function Profile() {
         </Button>
 
         <ModalProfile openModal={openModal} closeModal={() => {setOpenModal(!openModal); removeModal()}}/>
+
+        
+        <ButtonLink href="/dashboard/profile/kepuasanKaryawan" className="w-full rounded-lg bg-green-500 hover:bg-green-600">
+          Kepuasan Karyawan
+        </ButtonLink>
 
         
 

@@ -2,14 +2,17 @@
 import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
-import QuestionsDetail from "@/components/dashboard/question/QuestionsDetail";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaRegEye, FaRegSave } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPen, FaRegEye, FaRegSave } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { MdDateRange } from "react-icons/md";
-import EmployeeQuestionsInput, { EmployeeQuestionType } from "@/components/dashboard/question/EmployeeQuestionsInput";
+import EmployeeQuestionsInput, { EmployeeQuestionType } from "@/components/dashboard/question1/EmployeeQuestionsInput";
+import { ButtonLink } from "@/components/ui/Button";
+import ModalKepuasanKaryawan from "@/components/dashboard/ModalKepuasanKaryawan";
+import { QuestionGroupType } from "@/components/dashboard/question/question.type";
+import QuestionGroups from "@/components/dashboard/question/QuestionGroups";
 
 
 
@@ -19,35 +22,33 @@ export default function ProfileKaryawan() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   useEffect(() => {
     setHeaderBar({
-      pageName: "Detail Form",
-      breadCrumb: ["Dashboard", "Kepuasan Karyawan", "Detail Form"],
+      pageName: "Detail Kepuasan Karyawan",
+      breadCrumb: ["Dashboard", "Kepuasan Karyawan", "Detail"],
     });
     setSidebarActiveKey("Kepuasan Karyawan");
   }, [setHeaderBar, setSidebarActiveKey])
 
   
-  const [questions, setQuestions] = useState<EmployeeQuestionType[]>([{
+  const [questions, setQuestions] = useState<QuestionGroupType[]>([{
       id: `ABCDE1`,
       title : `ABCDE1`,
       questions: [{
         id: 'ABCDE11',
         question: 'ABCDE11',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE111', label: 'ABCDE111', point: 5, isSelected: true},
-          {id: 'ABCDE112', label: 'ABCDE112', point: 5, isSelected: false},
-          {id: 'ABCDE113', label: 'ABCDE113', point: 5, isSelected: false},
-          {id: 'ABCDE114', label: 'ABCDE114', point: 5, isSelected: false},
+          {id: 'ABCDE111', label: 'ABCDE111', point: 5},
+          {id: 'ABCDE112', label: 'ABCDE112', point: 5},
+          {id: 'ABCDE113', label: 'ABCDE113', point: 5},
+          {id: 'ABCDE114', label: 'ABCDE114', point: 5},
         ],
       }, {
         id: 'ABCDE12',
         question: 'ABCDE12',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE121', label: 'ABCDE121', point: 5, isSelected: true},
-          {id: 'ABCDE122', label: 'ABCDE122', point: 5, isSelected: false},
-          {id: 'ABCDE123', label: 'ABCDE123', point: 5, isSelected: false},
-          {id: 'ABCDE124', label: 'ABCDE124', point: 5, isSelected: false},
+          {id: 'ABCDE121', label: 'ABCDE121', point: 5},
+          {id: 'ABCDE122', label: 'ABCDE122', point: 5},
+          {id: 'ABCDE123', label: 'ABCDE123', point: 5},
+          {id: 'ABCDE124', label: 'ABCDE124', point: 5},
         ],
       }]
     }, {
@@ -56,22 +57,20 @@ export default function ProfileKaryawan() {
       questions: [{
         id: 'ABCDE21',
         question: 'ABCDE21',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE211', label: 'ABCDE211', point: 5, isSelected: true},
-          {id: 'ABCDE212', label: 'ABCDE212', point: 5, isSelected: false},
-          {id: 'ABCDE213', label: 'ABCDE213', point: 5, isSelected: false},
-          {id: 'ABCDE214', label: 'ABCDE214', point: 5, isSelected: false},
+          {id: 'ABCDE211', label: 'ABCDE211', point: 5},
+          {id: 'ABCDE212', label: 'ABCDE212', point: 5},
+          {id: 'ABCDE213', label: 'ABCDE213', point: 5},
+          {id: 'ABCDE214', label: 'ABCDE214', point: 5},
         ],
         }, {
         id: 'ABCDE22',
         question: 'ABCDE22',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE221', label: 'ABCDE221', point: 5, isSelected: true},
-          {id: 'ABCDE222', label: 'ABCDE222', point: 5, isSelected: false},
-          {id: 'ABCDE223', label: 'ABCDE223', point: 5, isSelected: false},
-          {id: 'ABCDE224', label: 'ABCDE224', point: 5, isSelected: false},
+          {id: 'ABCDE221', label: 'ABCDE221', point: 5},
+          {id: 'ABCDE222', label: 'ABCDE222', point: 5},
+          {id: 'ABCDE223', label: 'ABCDE223', point: 5},
+          {id: 'ABCDE224', label: 'ABCDE224', point: 5},
         ],
       }]
     }, {
@@ -80,22 +79,20 @@ export default function ProfileKaryawan() {
       questions: [{
         id: 'ABCDE31',
         question: 'ABCDE31',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE311', label: 'ABCDE311', point: 5, isSelected: true},
-          {id: 'ABCDE312', label: 'ABCDE312', point: 5, isSelected: false},
-          {id: 'ABCDE313', label: 'ABCDE313', point: 5, isSelected: false},
-          {id: 'ABCDE314', label: 'ABCDE314', point: 5, isSelected: false},
+          {id: 'ABCDE311', label: 'ABCDE311', point: 5},
+          {id: 'ABCDE312', label: 'ABCDE312', point: 5},
+          {id: 'ABCDE313', label: 'ABCDE313', point: 5},
+          {id: 'ABCDE314', label: 'ABCDE314', point: 5},
         ],
         }, {
         id: 'ABCDE32',
         question: 'ABCDE32',
-        questionPoint: 10,
         answerKeys: [
-          {id: 'ABCDE321', label: 'ABCDE321', point: 5, isSelected: true},
-          {id: 'ABCDE322', label: 'ABCDE322', point: 5, isSelected: false},
-          {id: 'ABCDE323', label: 'ABCDE323', point: 5, isSelected: false},
-          {id: 'ABCDE324', label: 'ABCDE324', point: 5, isSelected: false},
+          {id: 'ABCDE321', label: 'ABCDE321', point: 5},
+          {id: 'ABCDE322', label: 'ABCDE322', point: 5},
+          {id: 'ABCDE323', label: 'ABCDE323', point: 5},
+          {id: 'ABCDE324', label: 'ABCDE324', point: 5},
         ],
       }]
   }]);
@@ -104,12 +101,11 @@ export default function ProfileKaryawan() {
       <div className="flex flex-col w-full md:w-1/2 gap-4">
 
       <div className="bg-white rounded-lg shadow-xl block mt-4 p-8">
-          <h4 className="text-xl text-gray-900 font-bold">Detail Form Pertanyaan</h4>
+          <h4 className="text-xl text-gray-900 font-bold">Detail Form Kepuasan Karyawan</h4>
           <ul className="mt-2 text-gray-700">
             <li className="flex flex-col items-center justify-between sm:flex-row border-y py-2">
               <span className="font-bold w-fit">Nama Form:</span>
-              <Input defaultValue={`Form ABCDE1`} className="text-center sm:text-right" />
-              {/* <span className="text-gray-700 w-fit"></span> */}
+              <span className="text-gray-700 w-fit">Form ABCDE1</span>
             </li>
             <li className="flex flex-col items-center justify-between sm:flex-row border-b py-2">
               <span className="font-bold text-right sm:text-left w-fit">Jumlah Pertanyaan:</span>
@@ -123,21 +119,20 @@ export default function ProfileKaryawan() {
               <span className="font-bold text-right sm:text-left w-fit">Jumlah Digunakan</span>
               <span className="bg-sky-200 text-sky-600 py-1 px-3 rounded-full text-xs">20x Digunakan</span>
             </li>
-            <li className="flex flex-col items-center justify-between sm:flex-row border-b py-2">
+            <li className="flex flex-col items-center justify-between sm:flex-row py-2">
               <span className="font-bold text-right sm:text-left w-fit">Status Pertanyaan:</span>
-              <Dropdown placeholder="Pilih Status" className="w-24" data={[
-                  {value: "True"},
-                  {value: "False", status: true},
-                ]} />
-            </li>
-            <li className="py-2">
-              <button className="flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-xl w-full text-white py-2 duration-300">
-                <FaRegSave className="w-5 h-5 inline"/>
-                Simpan
-              </button>
+              <span className="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">False</span>
             </li>
           </ul>
         </div>
+
+        <ButtonLink 
+          href="/dashboard/kepuasanKaryawan/updateEdit"
+          className="flex justify-center items-center gap-2 bg-sky-500 hover:bg-sky-600 rounded-xl w-full text-white py-2 duration-300"
+        >
+          <FaPen className="w-5 h-5 inline"/>
+          Ubah Form Pertanyaan
+        </ButtonLink>
 
         <div className="bg-white rounded-lg shadow-xl p-8 order-5">
           <h4 className="text-xl text-gray-900 font-bold">Data Pengguna Form</h4>
@@ -281,34 +276,82 @@ export default function ProfileKaryawan() {
           </div>
         </div>
 
-        <Modal openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
-          <div className="w-full max-w-2xl bg-white shadow-md rounded-lg border">
-            <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
-              <h2 className="text-xl font-semibold text-gray-600">Form Kepuasan Karyawan</h2>
-              <button role="button" onClick={() => {
-                setOpenModal(!openModal);
-                removeModal();
-              }} className="cursor-pointertext-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"> 
-                <ImCross width={20} height={20} />
-              </button>
-            </div>
-
-            <div className="py-5 px-8">
-              {/* <QuestionsDetail data={{
-                name: `ABCDE1234`,
-                position: `ABCDE1234`,
-                time: new Date(),
-                // questions:questionData.shift()?.questions,
-                }} /> */}
-            </div>
-          </div>
-        </Modal>
+        <ModalKepuasanKaryawan data={{
+          name           : `ABCDE1`,
+          position       : `ABCDE1`,
+          time           : new Date(),
+          questionGroups : [{
+              id: `ABCDE1`,
+              title : `ABCDE1`,
+              questions: [{
+                id: 'ABCDE11',
+                question: 'ABCDE11',
+                answerKeys: [
+                  {id: 'ABCDE111', label: 'ABCDE111', point: 5, status: true},
+                  {id: 'ABCDE112', label: 'ABCDE112', point: 5, status: false},
+                  {id: 'ABCDE113', label: 'ABCDE113', point: 5, status: false},
+                  {id: 'ABCDE114', label: 'ABCDE114', point: 5, status: false},
+                ],
+              }, {
+                id: 'ABCDE12',
+                question: 'ABCDE12',
+                answerKeys: [
+                  {id: 'ABCDE121', label: 'ABCDE121', point: 5, status: true},
+                  {id: 'ABCDE122', label: 'ABCDE122', point: 5, status: false},
+                  {id: 'ABCDE123', label: 'ABCDE123', point: 5, status: false},
+                  {id: 'ABCDE124', label: 'ABCDE124', point: 5, status: false},
+                ],
+              }]
+            }, {
+              id: `ABCDE2`,
+              title : `ABCDE2`,
+              questions: [{
+                id: 'ABCDE21',
+                question: 'ABCDE21',
+                answerKeys: [
+                  {id: 'ABCDE211', label: 'ABCDE211', point: 5, status: true},
+                  {id: 'ABCDE212', label: 'ABCDE212', point: 5, status: false},
+                  {id: 'ABCDE213', label: 'ABCDE213', point: 5, status: false},
+                  {id: 'ABCDE214', label: 'ABCDE214', point: 5, status: false},
+                ],
+                }, {
+                id: 'ABCDE22',
+                question: 'ABCDE22',
+                answerKeys: [
+                  {id: 'ABCDE221', label: 'ABCDE221', point: 5, status: true},
+                  {id: 'ABCDE222', label: 'ABCDE222', point: 5, status: false},
+                  {id: 'ABCDE223', label: 'ABCDE223', point: 5, status: false},
+                  {id: 'ABCDE224', label: 'ABCDE224', point: 5, status: false},
+                ],
+              }]
+            }, {
+              id: `ABCDE3`,
+              title : `ABCDE3`,
+              questions: [{
+                id: 'ABCDE31',
+                question: 'ABCDE31',
+                answerKeys: [
+                  {id: 'ABCDE311', label: 'ABCDE311', point: 5, status: true},
+                  {id: 'ABCDE312', label: 'ABCDE312', point: 5, status: false},
+                  {id: 'ABCDE313', label: 'ABCDE313', point: 5, status: false},
+                  {id: 'ABCDE314', label: 'ABCDE314', point: 5, status: false},
+                ],
+                }, {
+                id: 'ABCDE32',
+                question: 'ABCDE32',
+                answerKeys: [
+                  {id: 'ABCDE321', label: 'ABCDE321', point: 5, status: true},
+                  {id: 'ABCDE322', label: 'ABCDE322', point: 5, status: false},
+                  {id: 'ABCDE323', label: 'ABCDE323', point: 5, status: false},
+                  {id: 'ABCDE324', label: 'ABCDE324', point: 5, status: false},
+                ],
+              }]
+          }]
+        }} openModal={openModal} closeModal={() => {setOpenModal(!openModal); removeModal()}}/>
       </div>
 
       <div className="w-full md:w-1/2">
-          <EmployeeQuestionsInput data={questions} setData={e => {
-            setQuestions(e);
-          }} />
+        <QuestionGroups data={questions} />
       </div>
     </div>
   );

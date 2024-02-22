@@ -25,7 +25,7 @@ export default function Dash() {
   return (
     <>
     
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+      {/* <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
         <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
           <div className="bg-clip-border mx-4 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
             <FaMoneyBills className="w-6 h-6 text-white"/>
@@ -82,7 +82,7 @@ export default function Dash() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       
       <div className="mb-4 grid grid-cols-1 gap-4 xl:grid-cols-8">
 
@@ -140,7 +140,7 @@ export default function Dash() {
                 ]}
               />
 
-              <div className="p-6 pb-2 block w-full">
+              {/* <div className="p-6 pb-2 block w-full">
                 <table className="min-w-max w-full table-auto">
                   <thead>
                     <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -203,7 +203,7 @@ export default function Dash() {
                       ))}
                   </tbody>
                 </table>
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
@@ -236,7 +236,7 @@ export default function Dash() {
                 },
               ]}
             />
-            <div className="p-6 pb-2 block w-full">
+            {/* <div className="p-6 pb-2 block w-full">
               <table className="min-w-max w-full table-auto">
                 <thead>
                   <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -299,7 +299,7 @@ export default function Dash() {
                     ))}
                 </tbody>
               </table>
-            </div>
+            </div> */}
           </div>
         </div>
 

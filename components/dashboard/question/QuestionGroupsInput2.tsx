@@ -6,7 +6,7 @@ import { FaRegPlusSquare, FaRegTrashAlt } from 'react-icons/fa';
 import { AnswerKeyType, QuestionType } from './question.type';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function QuestionsInput({data: questions, setData: setQuestions}: {data: QuestionType[], setData: React.Dispatch<React.SetStateAction<QuestionType[]>>}) {
+export default function QuestionGroupsInput({data: questions, setData: setQuestions}: {data: QuestionType[], setData: React.Dispatch<React.SetStateAction<QuestionType[]>>}) {
   // const [questions, setQuestions] = useState(questions);
 
   const handleDragDrop = (results: DropResult) => {
@@ -41,9 +41,11 @@ export default function QuestionsInput({data: questions, setData: setQuestions}:
         <DragDropContext onDragEnd={handleDragDrop}>
           <Droppable droppableId="root" type="group">
             {dropProv => (
-              <div className="grid grid-cols-1 gap-5 divide-y" {...dropProv.droppableProps} ref={dropProv.innerRef}>
+              <div className="flex flex-col w-full gap-4" {...dropProv.droppableProps} ref={dropProv.innerRef}>
                 {questions.length == 0 && (
-                  <h4 className='text-center'>Questions Not Found</h4>
+                  <div className="bg-white rounded-lg shadow-xl block overflow-x-auto md:mt-0 p-8">
+                    <h4 className='text-center'>Questions Not Found</h4>
+                  </div>
                 )}
                 {questions.map((question, questionIndex) => (
                   <Question key={questionIndex} question={question} questionIndex={questionIndex} questions={questions} setQuestions={setQuestions} />

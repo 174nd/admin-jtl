@@ -7,7 +7,7 @@ import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPen } from "react-icons/fa";
 import { FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { ImCross } from "react-icons/im";
@@ -115,6 +115,12 @@ export default function DataKaryawan() {
                       questionAmount: 30,
                       usingAmount: 100,
                       status: false,
+                    }, {
+                      date: "30 April 2024",
+                      name: "Form ABCDE1",
+                      questionAmount: 30,
+                      usingAmount: 0,
+                      status: false,
                     }
                   ].map((value, index) => (
                     <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
@@ -147,6 +153,9 @@ export default function DataKaryawan() {
                       </td>
                       <td className="py-3 px-6 text-center">
                         <div className="flex item-center justify-center">
+                          <Link href={"/dashboard/kepuasanKaryawan/" + (value.usingAmount > 0 ? 'update': 'updateEdit')} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <FaPen/>
+                          </Link>
                           <Link href={"/dashboard/kepuasanKaryawan/detail"} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <FaRegEye/>
                           </Link>

@@ -12,7 +12,7 @@ export default function AnswerKeyDetail({data}: {data: AnswerKeyType[]}) {
         <button 
           key={answerIndex}
           className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300` + (answerKeyActive != answerIndex ? 
-            ` border-sky-500 group hover:bg-sky-500`
+            ` border-sky-500 group hover:border-sky-500`
           : ` bg-sky-500 group hover:border-sky-500 hover:bg-transparent`)}
           onClick={() => setAnswerKeyActive(answerIndex)}
         >

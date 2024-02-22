@@ -68,27 +68,27 @@ export default function ModalProfile({openModal, closeModal, data}: {data?: user
                 ]} />
               </div>
 
-<div className="py-2">
-  <label htmlFor="departemen" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-    Departemen
-  </label>
-  <Select id='departemen' placeholder='Departemen' className='mt-2' data={[
-    {value: "Departemen 1"},
-    {value: "Departemen 2"},
-    {value: "Departemen 3"},
-  ]} />
-</div>
+              <div className="py-2">
+                <label htmlFor="departemen" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                  Departemen
+                </label>
+                <Select id='departemen' placeholder='Departemen' className='mt-2' data={[
+                  {value: "Departemen 1"},
+                  {value: "Departemen 2"},
+                  {value: "Departemen 3"},
+                ]} />
+              </div>
 
-<div className="py-2">
-  <label htmlFor="lokasi" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-    Lokasi
-  </label>
-  <Select id='lokasi' placeholder='Lokasi' className='mt-2' data={[
-    {value: "Pusat", status: true},
-    {value: "Curug"},
-    {value: "AMDK"},
-  ]} />
-</div>
+              <div className="py-2">
+                <label htmlFor="lokasi" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+                  Lokasi
+                </label>
+                <Select id='lokasi' placeholder='Lokasi' className='mt-2' data={[
+                  {value: "Pusat", status: true},
+                  {value: "Curug"},
+                  {value: "AMDK"},
+                ]} />
+              </div>
 
               <div className="py-2">
                 <label htmlFor="noHp" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">

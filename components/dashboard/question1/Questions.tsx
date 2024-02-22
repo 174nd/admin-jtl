@@ -1,5 +1,17 @@
-import React from 'react';
-import { AnswerKeyType, QuestionType } from './question.type';
+import React, { useEffect, useState } from 'react';
+import { DragDropContext, Draggable, DropResult, Droppable } from '@hello-pangea/dnd';
+import { MdDragIndicator } from 'react-icons/md';
+import { TextareaAutoHeight } from '@/components/ui/Textarea';
+import { FaRegPlusSquare, FaRegTrashAlt } from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
+
+export type AnswerKeyType = {id: string, label: string, point: number};
+export type QuestionType = {
+  id: string;
+  question: string;
+  answerKeys: AnswerKeyType[]
+};
+
 
 export default function Questions({data: questions}: {data: QuestionType[]}) {
 
@@ -38,18 +50,14 @@ function Question({question, questionIndex}: {question: QuestionType, questionIn
 function AnswerKey({answer, answerIndex}: {answer: AnswerKeyType, answerIndex: number}){
 
   return (
-    <div className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 flex items-center justify-between gap-4` + (answer.status ? 
-      ` bg-sky-500 group`
-    : ` border-sky-500 group`)}>
-      <p className={`w-full !p-0 transition-none border-0 focus:!shadow-none` + (answer.status ? 
-        ` text-white`
-      : ` text-black`)}>{answer.label}</p>
+        <div className={`px-4 py-2 rounded-lg border-solid w-full border-2 transition-all duration-300 border-sky-500 group/answer flex items-center justify-between gap-4`}>
+          <p className='w-full !p-0 transition-none border-0 focus:!shadow-none'>{answer.label}</p>
 
-      <span className='flex justify-between items-center gap-2'>
-        <span className="bg-sky-200 text-sky-600 py-1 px-3 w-full rounded-full text-xs">
-          {answer.point}
-        </span>
-      </span>
-    </div>
+          <span className='flex justify-between items-center gap-2'>
+            <span className="bg-sky-200 text-sky-600 py-1 px-3 w-full rounded-full text-xs">
+              {answer.point}
+              </span>
+          </span>
+        </div>
   )
 }

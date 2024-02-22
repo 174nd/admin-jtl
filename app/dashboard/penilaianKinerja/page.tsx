@@ -1,13 +1,10 @@
 "use client";
 
-import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
-import Modal from "@/components/ui/Modal";
 import { useHeaderSidebarContext } from "@/contexts/headerSidebar-context";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPen } from "react-icons/fa";
 import { FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { ImCross } from "react-icons/im";
@@ -34,55 +31,15 @@ export default function DataKaryawan() {
 
             </div>
 
-            <button 
+
+            
+            <Link
+              href={`/dashboard/penilaianKinerja/insert`}
               className="flex justify-center h-3/4 items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-xl w-48 text-white py-2 duration-300"
-              onClick={() => {setOpenModal(!openModal); addModal()}}
             >
               <MdFormatListBulletedAdd/>
               Buat Form
-          </button>
-            
-            <Modal openModal={openModal} closeModal={() => setOpenModal(!openModal)}>
-              <div className="w-full max-w-2xl bg-white shadow-md rounded-lg border">
-                <div className="px-5 py-3 border-b border-gray-200 flex justify-between">
-                  <h2 className="text-xl font-semibold text-gray-600">Form Kepuasan Karyawan</h2>
-                  <button role="button" onClick={() => {
-                    setOpenModal(!openModal);
-                    removeModal();
-                  }} className="cursor-pointertext-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"> 
-                    <ImCross width={20} height={20} />
-                  </button>
-                </div>
-
-                <div className="py-5 px-8">
-                  <div className="grid grid-cols-1 gap-5 divide-y">
-                    {[
-                      "Nama Form",
-                      "Tanggal Lahir",
-                      "Jabatan",
-                      "Departemen",
-                      "No. Hp",
-                      "Email",
-                      "Alamat",
-                      "Status",
-                    ].map((v,i) => (
-                      <div key={i} className="py-2">
-                        <label htmlFor="name" className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-                          {v}
-                        </label>
-                        <input id="name" className="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder={v} />
-                      </div>
-                    ))}
-                  </div>
-                  
-                </div>
-
-                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"> Simpan </button>
-                  <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancel </button>
-                </div>
-              </div>
-            </Modal>
+          </Link>
           </div>
 
           <div className=" bg-gray-50 border-gray-300 rounded-lg shadow-xl">
@@ -111,6 +68,12 @@ export default function DataKaryawan() {
                       name: "Form ABCDE1",
                       questionAmount: 30,
                       usingAmount: 100,
+                      status: false,
+                    }, {
+                      date: "30 April 2024",
+                      name: "Form ABCDE1",
+                      questionAmount: 10,
+                      usingAmount: 0,
                       status: false,
                     }
                   ].map((value, index) => (
@@ -144,6 +107,9 @@ export default function DataKaryawan() {
                       </td>
                       <td className="py-3 px-6 text-center">
                         <div className="flex item-center justify-center">
+                          <Link href={"/dashboard/penilaianKinerja/" + (value.usingAmount > 0 ? 'update': 'updateEdit')} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <FaPen/>
+                          </Link>
                           <Link href={"/dashboard/penilaianKinerja/detail"} className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <FaRegEye/>
                           </Link>

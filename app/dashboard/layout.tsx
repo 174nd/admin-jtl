@@ -22,36 +22,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={karla.className}>
-      {/* <body className={karla.className + " overflow-hidden"}> */}
-      <div className="bg-gray-50/50">
-        <HeaderSidebarContextProvider>
-          <Sidebar/>
-          <div className="p-4 xl:ml-72 relative">
-            <Header/>
-            <div className="mt-9">
-              {children}
+        {/* <body className={karla.className + " overflow-hidden"}> */}
+        <div className="bg-gray-50/50">
+          <HeaderSidebarContextProvider>
+            <Sidebar/>
+            <div className="p-4 xl:ml-72 relative">
+              <Header/>
+              <div className="mt-9">
+                {children}
+              </div>
+              <Footer/>
             </div>
-            <Footer/>
-
-
-            {/* */}
-
-
-
-
-
-
-          </div>
-        </HeaderSidebarContextProvider>
-      
-
-
-
-      </div>
-
-
-
-
+          </HeaderSidebarContextProvider>
+        </div>
       </body>
     </html>
   )

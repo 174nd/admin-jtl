@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="absolute -z-10 bottom-0 w-full bg-gradient-to-b from-transparent via-white/30 to-white h-48"></div>
 
       <div className="container w-full flex flex-col items-center">
-        <h1 className='text-8xl font-bold whitespace-nowrap text-center text-transparent bg-gradient-to-r from-sky-700 via-sky-600 to-blue-500 bg-clip-text mt-64'>
+        <h1 className='mt-64 text-8xl font-bold whitespace-nowrap text-center text-transparent bg-gradient-to-r from-sky-700 via-sky-600 to-blue-500 bg-clip-text'>
           Jasa Tirta Luhur
           {/* JASA TIRTA LUHUR */}
         </h1>

@@ -1,16 +1,16 @@
 import '@/app/globals.css';
-import { Karla } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
 
-const karla = Karla({
+const karla = Inter({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ['latin'],
   variable: "--font-karla"
 })
 
 export const metadata: Metadata = {
-  title: "Login - Sistem Informasi Manajemen JTL",
-  description: "Sistem Informasi Manajemen Jasa Tirta Luhur",
+  title: "Jasa Tirta Luhur",
+  description: "Manajemen Jasa Tirta Luhur",
   icons: "/logo.svg"
 };
 

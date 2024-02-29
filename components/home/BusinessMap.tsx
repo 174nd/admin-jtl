@@ -5,7 +5,7 @@ import { AiOutlineDown } from 'react-icons/ai';
 
 export default function BusinessMap() {
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
-  const [imageDetail, setImageDetail] = useState<string>('hero.jpg');
+  const [imageDetail, setImageDetail] = useState<string>('awal.jpeg');
 
   const toggle = (index: number) => {
     if(dropdownOpen === index) return setDropdownOpen(null);

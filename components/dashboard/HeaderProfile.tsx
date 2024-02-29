@@ -43,7 +43,7 @@ export default function HeaderProfile() {
             </Link>
           </div>
 
-          <Link href="/" className="w-full px-4 py-4 hover:bg-gray-100 flex justify-center" onClick={() => setDropdown(!dropdown)}>
+          <Link href="/login" className="w-full px-4 py-4 hover:bg-gray-100 flex justify-center" onClick={() => setDropdown(!dropdown)}>
             <span className="text-sm font-medium text-gray-800 leading-none">
               Logout
             </span>

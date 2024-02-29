@@ -13,24 +13,24 @@ export default function BusinessMap() {
   }
 
   const hoverImage = (index: number | null) => {
-    const image = index != null || dropdownOpen != null ? onData[index as number ?? dropdownOpen].image : 'hero.jpg';
+    const image = index != null || dropdownOpen != null ? onData[index as number ?? dropdownOpen].image : 'awal.jpeg';
     setImageDetail(image);
   }
 
   const onData = [
-    {title: "AMDK Jatiluhur", image: 'Picture1.jpg', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
-    {title: "SPAM Biki & Curug (O&M)", image: 'Picture2.jpg', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
-    {title: "SPAM Marunda", image: 'Picture3.jpg', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
+    {title: "AMDK Jatiluhur", image: 'amdkJatiluhur.jpg', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
+    {title: "SPAM Biki & Curug (O&M)", image: 'SPAM Biki & Curug (O&M).png', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
+    {title: "SPAM Marunda", image: 'SPAM Marunda.jpg', description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis libero possimus accusantium architecto! Sit esse excepturi dolores animi similique, a nesciunt accusantium harum beatae saepe natus architecto incidunt maiores corrupti."},
   ]
   return (
-    <div className='container mx-auto'>
-      <div className="bg-gradient-to-b from-blue-300/20 to-white w-full h-10"/>
+    <div className='relative '>
+      <div className="absolute top-0 bg-gradient-to-b from-blue-300/20 to-transparent w-full h-10"/>
 
       
       <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:pt-24 lg:pb-12 lg:px-6">
         <div className="gap-8 lg:grid lg:grid-cols-2 xl:gap-16 justify-items-start">
           <Image className="hidden w-full h-96 mb-4 rounded-lg lg:mb-0 lg:flex lg:self-start" 
-            width={100} height={100} alt="feature image 2"
+            width={500} height={500} alt="feature image 2"
             src={`/` + imageDetail}
           />
 

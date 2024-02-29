@@ -4,10 +4,10 @@ import React from 'react'
 export default function ContactUs() {
   return (
     <div className={`relative bg-cover bg-center backdrop-blur-sm pb-14`}>
-      <div className="h-full w-full absolute -z-10">
+      <div className="h-full w-full absolute -z-10 bg-[url('/bg-login.jpeg')] bg-cover">
         <div className="h-full w-full absolute bg-blue-500/30 backdrop-blur-xl"/>
         <div className="bg-gradient-to-b from-white to-transparent h-24 absolute w-full"/>
-        <Image src='/bg-login.jpeg' alt="" width={100} height={100} className='h-full w-full'/>
+        {/* <Image src='/bg-login.jpeg' alt="" width={100} height={100} className='h-full w-full'/> */}
       </div>
       <div className='container mx-auto pt-24'>
         <div className="mx-24 mb-16 rounded-xl p-8 bg-gradient-to-r from-sky-300 via-sky-400 to-blue-500">
